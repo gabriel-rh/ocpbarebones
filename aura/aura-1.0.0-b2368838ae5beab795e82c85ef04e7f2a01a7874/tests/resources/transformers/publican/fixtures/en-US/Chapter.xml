@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Test.ent">
+%BOOK_ENTITIES;
+]>
+<chapter conformance="2" id="chap-Documentation-Test-Test_Chapter">
+	<title>Test Chapter</title>
+	 <para>
+		This is a test paragraph
+	</para>
+	 <section conformance="3" id="sect-Documentation-Test-Test_Chapter-Test_Section_1">
+		<title>Test Section 1</title>
+		 <para>
+			This is a test paragraph in a section
+		</para>
+
+	</section>
+	 <section conformance="4" id="sect-Documentation-Test-Test_Chapter-Test_Section_2">
+		<title>Test Section 2</title>
+		 <para>
+			This is a test paragraph in Section 2
+		</para>
+		 <section>
+			<title>Test Section 1.1</title>
+			 <para>
+				This is a test paragraph in a section
+			</para>
+			 <section>
+				<title>Test Section 1.1.1</title>
+				 <para>
+					This is a test paragraph in a section
+				</para>
+
+			</section>
+
+		</section>
+		 <section>
+			<title>Test Section 1.2</title>
+			 <para>
+				This is a test paragraph in a section
+			</para>
+
+		</section>
+
+	</section>
+</chapter>
+

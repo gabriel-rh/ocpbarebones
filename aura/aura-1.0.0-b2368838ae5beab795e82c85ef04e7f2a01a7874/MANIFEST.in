@@ -1,0 +1,7 @@
+include LICENSE
+include aura.bash
+include aura.conf
+recursive-include man *
+recursive-include tests *
+recursive-exclude tests *.pyc
+recursive-exclude tests *.pyo
