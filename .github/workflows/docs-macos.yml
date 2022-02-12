@@ -33,7 +33,7 @@ jobs:
         brew install gcc
         brew install make
         sudo gem install ascii_binder
-        ls /usr/local/lib/ruby/gems/
+        which asciibinder
     - name: Install python dependencies
       run: |
         python -m pip install --upgrade pip
