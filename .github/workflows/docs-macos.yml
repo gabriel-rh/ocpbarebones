@@ -51,6 +51,9 @@ jobs:
         python3 build.py --distro openshift-enterprise --product "OpenShift Container Platform" --version 4.10 --no-upstream-fetch
         asciibinder build
         pwd
+        ls
+        ls _preview/
+        ls _preview/openshift-enterprise
         cp -Rf _preview/openshift-enterprise/main/. dest/
         cd dest
         pwd
