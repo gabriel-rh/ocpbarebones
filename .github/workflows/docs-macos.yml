@@ -25,6 +25,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: source
+
+    - uses: actions/checkout@v2
+      with:
+        ref: gh-pages 
+        path: dest
+
+    
     - name: Install ruby dependencies
       run: |        
         sudo gem install asciidoctor
@@ -37,8 +46,21 @@ jobs:
         pip3 install pyyaml
         pip3 install aura.tar.gz
     - name: build
-      run: |        
+      run: |  
+        cd source
         python3 build.py --distro openshift-enterprise --product "OpenShift Container Platform" --version 4.10 --no-upstream-fetch
         asciibinder build
+        pwd
+        cp -Rf _preview/openshift-enterprise/main/. dest/
+        cd dest
+        pwd
+        ls
+        git status
+        git config --local user.email "action@github.com"        
+        git config --local user.name "GitHub Action"
+        git status
+        git add .
+        git commit -m "update docs"
+        git push
     
     
