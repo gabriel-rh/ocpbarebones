@@ -40,7 +40,9 @@ jobs:
         python -m pip install --upgrade pip
         pip3 install pyyaml
         pip3 install aura.tar.gz
-          
+    - name: build
+      run: |        
+        python3 build.py --distro openshift-enterprise --product "OpenShift Container Platform" --version 4.10 --no-upstream-fetch
           
           
           
