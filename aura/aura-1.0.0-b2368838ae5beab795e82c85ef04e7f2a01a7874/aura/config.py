@@ -1,1 +1,0 @@
-VIDEOS_NAME = "videos"
