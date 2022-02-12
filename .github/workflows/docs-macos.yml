@@ -29,9 +29,6 @@ jobs:
       run: |        
         sudo gem install asciidoctor
         sudo gem install asciidoctor-diagram
-        brew install rubygems
-        brew install gcc
-        brew install make
         sudo gem install ascii_binder
         which asciibinder
     - name: Install python dependencies
