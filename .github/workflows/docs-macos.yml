@@ -39,6 +39,9 @@ jobs:
     - name: build
       run: |        
         python3 build.py --distro openshift-enterprise --product "OpenShift Container Platform" --version 4.10 --no-upstream-fetch
+        git init
+        git add . 
+        git commit -m initial_commit
         asciibinder build
     
     
