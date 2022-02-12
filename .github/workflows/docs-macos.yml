@@ -34,8 +34,8 @@ jobs:
         brew install make
         gem install ascii_binder
         ls /usr/local/lib/ruby/gems/
-     - name: Install python dependencies
-       run: |
+    - name: Install python dependencies
+      run: |
         python -m pip install --upgrade pip
         pip3 install pyyaml
         pip3 install aura.tar.gz
