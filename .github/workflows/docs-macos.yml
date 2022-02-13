@@ -48,7 +48,7 @@ jobs:
     - name: build
       run: |  
         cd source
-        python3 build.py --distro openshift-enterprise --product "OpenShift Container Platform" --version 4.10 --no-upstream-fetch
+        # python3 build.py --distro openshift-enterprise --product "OpenShift Container Platform" --version 4.10 --no-upstream-fetch
         asciibinder build
         pwd
         ls
