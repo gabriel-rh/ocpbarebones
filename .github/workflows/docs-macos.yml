@@ -54,7 +54,7 @@ jobs:
         ls
         ls _preview/
         ls _preview/openshift-enterprise
-        cp -Rf _preview/openshift-enterprise/main/. dest/
+        cp -Rf _preview/openshift-enterprise/latest/. dest/
         cd dest
         pwd
         ls
