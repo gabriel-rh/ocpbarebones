@@ -6,19 +6,7 @@ openshift-enterprise:
   site_name: Documentation
   site_url: https://docs.openshift.com/
   branches:
-    enterprise-4.6:
-      name: '4.6'
-      dir: container-platform/4.6
-    enterprise-4.7:
-      name: '4.7'
-      dir: container-platform/4.7
-    enterprise-4.8:
-      name: '4.8'
-      dir: container-platform/4.8
-    enterprise-4.9:
-      name: '4.9'
-      dir: container-platform/4.9
-    enterprise-4.10:
-      name: '4.10'
-      dir: container-platform/4.10
+    main:
+      name: 'latest'
+      dir: latest
 
