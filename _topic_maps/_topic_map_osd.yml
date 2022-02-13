@@ -27,7 +27,7 @@ Dir: welcome
 Distros: openshift-dedicated
 Topics:
 - Name: Welcome
-  File: index
+  File: indexabc
 ---
 Name: Architecture
 Dir: osd_architecture
