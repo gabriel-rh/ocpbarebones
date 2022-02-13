@@ -208,4 +208,16 @@ Topics:
 - Name: OpenShift Dedicated managed resources
   File: osd-managed-resources
   Distros: openshift-dedicated
-  
+---
+Name: Support
+Dir: rosa_support
+Distros: openshift-rosa
+Topics:
+- Name: Support for ROSA
+  File: rosa-getting-support
+- Name: Troubleshooting expired offline access tokens
+  File: rosa-troubleshooting-expired-tokens
+- Name: Troubleshooting installations
+  File: rosa-troubleshooting-installations
+- Name: Troubleshooting cluster deployments
+  File: rosa-troubleshooting-deployments  
