@@ -1,0 +1,54 @@
+:_content-type: REFERENCE
+[id="odo-delete_{context}"]
+= odo delete
+
+
+The `odo delete` command is useful for deleting resources that are managed by odo.
+
+== Deleting a component
+
+To delete a _devfile_ component, run the `odo delete` command:
+
+[source,terminal]
+----
+$ odo delete
+----
+
+If the component has been pushed to the cluster, the component is deleted from the cluster, as well as its dependant storage, URL, secrets, and other resources.
+If the component has not pushed, the command exits with an error stating that it could not find the resources on the cluster.
+
+Use `-f` or `--force` flag to avoid the confirmation questions.
+
+== Undeploying Devfile Kubernetes components
+
+To undeploy the Devfile Kubernetes components deployed with `odo deploy` from the cluster, execute the `odo delete` command with `--deploy` flag:
+
+[source,terminal]
+----
+$ odo delete --deploy
+----
+
+Use `-f` or `--force` flag to avoid the confirmation questions.
+
+== Delete Everything
+
+Run the `odo delete` command with `--all` flag to delete all artifacts including:
+
+* _devfile_ component
+* Devfile Kubernetes component that was deployed using `odo deploy`
+* Devfile
+* Local configuration
+
+[source,terminal]
+----
+odo delete --all
+----
+
+== Available Flags
+
+* `-f`, `--force` - Use this flag to avoid the confirmation questions.
+* `-w`, `--wait` - Use this flag to wait for component deletion, and any dependencies. This flag does not work when undeploying.
+
+////
+Check the xref:../odo-flags.adoc[documentation on flags] to see more flags available.
+////
