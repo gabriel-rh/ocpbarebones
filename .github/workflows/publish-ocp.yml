@@ -9,6 +9,9 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     #branches: [ main ]
+    branches-ignore:
+      - main    
+    
   pull_request:
     branches: [ main ]
 
@@ -52,9 +55,14 @@ jobs:
         asciibinder build
         pwd
         ls
+        echo **_preview/**
         ls _preview/
+        echo **_preview/openshift-enterprise**
         ls _preview/openshift-enterprise
-        cp -Rf _preview/openshift-enterprise/latest/. ../dest/${GITHUB_REF##*/}
+        echo **_preview/${GITHUB_REF##*/}**
+        ls _preview/${GITHUB_REF##*/}
+        cp -Rf _preview/${GITHUB_REF##*/}/. ../dest/${GITHUB_REF##*/}
+        #cp -Rf _preview/openshift-enterprise/latest/. ../dest/${GITHUB_REF##*/}
         cd ../dest/${GITHUB_REF##*/}
         pwd
         ls
