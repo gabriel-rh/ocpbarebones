@@ -1,0 +1,3089 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if IE 9]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+  
+  <title>odo CLI reference - Developer CLI (odo) | CLI tools | OpenShift Container Platform latest</title>
+  <link href="https://assets.openshift.net/content/subdomain.css" rel="stylesheet" type="text/css">
+  <link href="https://docs.openshift.com/container-platform/4.1/_stylesheets/search.css" rel="stylesheet" />
+  <link href="https://docs.openshift.com/container-platform/4.1/_stylesheets/autumn.css" rel="stylesheet" />
+  <link href="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="https://assets.openshift.net/content/subdomain/favicon32x32.png" rel="shortcut icon" type="text/css">
+  <link href="https://assets.openshift.net/content/osh-nav-footer.css" rel="stylesheet" type="text/css" media="screen, print" />
+  <link href="https://docs.openshift.com/container-platform/4.1/_stylesheets/docs.css" rel="stylesheet" />
+  <!--[if IE]><link rel="shortcut icon" href="https://assets.openshift.net/content/subdomain/favicon.ico"><![endif]-->
+  <!-- or, set /favicon.ico for IE10 win -->
+  <meta content="OpenShift" name="application-name">
+  <meta content="#000000" name="msapplication-TileColor">
+  <meta content="https://assets.openshift.net/content/subdomain/touch-icon-precomposed.png" name="msapplication-TileImage">
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PMDVKG');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Adobe DTM -->
+<script src="//www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- End Adobe DTM -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+  <script id="trustarc" src="https://static.redhat.com/libs/redhat/marketing/latest/trustarc/trustarc.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+        rel="stylesheet">
+  <script>
+
+    function getPDF() {
+      var element = document.getElementsByClassName('main');
+      
+      var opt = {
+        margin:       10,
+        filename:     'cli_reference/developer_cli_odo/odo-cli-reference.pdf',
+        html2canvas:  { windowWidth: 650 },
+        image:        { type: 'jpeg', quality: 0.98 }
+      };
+      html2pdf().set(opt).from(element[0]).save();
+    }
+  </script>
+
+</head>
+
+<body onload="selectVersion('latest');">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PMDVKG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav id="main">
+  <div class="container">
+    <div class="row">
+      <div class="navbar navbar-default navbar-openshift" role="navigation">
+        <div class="navbar-header">
+            <a href="#nav-main" class="dropdown-toggle navbar-menu-toggle hidden visible-xs" data-toggle="collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+          <a class="navbar-brand" href="/"></a>
+        </div>
+        <div id="nav-main" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li id="products" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                Products <span class="fa fa-angle-down"></span>
+              </a>
+              <div class="dropdown-menu">
+                <div class="row flex-column flex-md-row">
+                  <div class="col-xs-12 col-sm-3">
+                    <h3>Overview</h3>
+                    <ul class="nav flex-column">
+                      <li><a target="_blank" href="https://www.openshift.com/products/features/">Features</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/products/pricing/">Pricing</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-12 col-sm-9">
+                    <h3>Featured Products</h3>
+                    <ul class="nav">
+                      <li>
+                        <a target="_blank" href="https://www.openshift.com/products/container-platform/">Red Hat OpenShift Container&nbsp;Platform</a>
+                        <p class="d-none d-md-block">Build, deploy and manage your applications across cloud- and on-premise infrastructure</p>
+                      </li>
+                      <li>
+                        <a target="_blank" href="https://www.openshift.com/products/dedicated/">Red Hat OpenShift Dedicated</a>
+                        <p class="d-none d-md-block">Single-tenant, high-availability Kubernetes clusters in the public cloud</p>
+                      </li>
+
+                      <li>
+                        <a target="_blank" href="https://www.openshift.com/products/online/">Red Hat OpenShift Online</a>
+                        <p class="d-none d-md-block">The fastest way for developers to build, host and scale applications in the public cloud</p>
+                      </li>
+
+                      <li class="nav-item">
+                        <a target="_blank" href="https://www.openshift.com/products/">All products <span class="fa fa-angle-right"></span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li id="learn" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Learn <span class="fa fa-angle-down"></span>
+              </a>
+              <div class="dropdown-menu">
+                <div class="row flex-md-nowrap">
+                  <div class="col-xs-12 col-sm-6">
+                    <h3>Learn</h3>
+                    <ul class="nav">
+                      <li><a target="_blank" href="https://www.openshift.com/learn/what-is-openshift/">What is OpenShift</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/learn/get-started/">Get started</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/learn/partners/">Partners</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/learn/success-stories/">Customer success stories</a></li>
+                      <li><a target="_blank" href="https://blog.openshift.com">Blog</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/learn/resources/">Resources</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <h3>Technology Topics</h3>
+                    <ul class="nav">
+                      <li><a target="_blank" href="https://www.openshift.com/learn/topics/knative/">Knative</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/learn/topics/security/">Security</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/learn/topics/kubernetes/">Kubernetes</a></li>
+                      <li><a target="_blank" href="https://www.openshift.com/learn/topics/service-brokers/">Service Brokers</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Community <span class="fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a target="_blank" href="https://commons.openshift.org">OpenShift Commons</a></li>
+                <li><a target="_blank" href="https://www.okd.io">Open Source (OKD)</a></li>
+                <li><a target="_blank" href="https://www.openshift.com/community/programs/startups/">Startups</a></li>
+                <li><a target="_blank" href="https://www.openshift.com/community/programs/grants/">Grants</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Support <span class="fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a target="_blank" href="https://help.openshift.com">Help Center</a></li>
+                <li><a href="https://docs.openshift.com">OpenShift Docs</a></li>
+              </ul>
+            </li>
+
+            <li><a target="_blank" class="nav-sign-up" href="https://www.openshift.com/trial/">Free Trial</a></li>
+
+            <li><a target="_blank" href="https://manage.openshift.com" class="nav-sign-in">Log In <span class="fa fa-angle-right"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <button id="hc-open-btn" class="open-btn-sm" onclick="openNav()" aria-label="Open"><span class="fa fa-bars" /></button>
+    <ol class="breadcrumb hide-for-print">
+      
+
+      
+
+      <li class="sitename">
+        <a href="/">
+          Documentation</a>
+      </li>
+      <li class="hidden-xs active">
+        
+          
+            <a href="https://docs.openshift.com/container-platform/latest/welcome/index.html">
+              OpenShift Container Platform
+            </a>
+          
+          <select id="version-selector" onchange="versionSelector(this);">
+              <option value="4.9">4.9</option>
+              <option value="4.8">4.8</option>
+              <option value="4.7">4.7</option>
+              <option value="4.6">4.6</option>
+              <option value="4.5">4.5</option>
+              <option value="4.4">4.4</option>
+              <option value="4.3">4.3</option>
+              <option value="4.2">4.2</option>
+              <option value="4.1">4.1</option>
+              <option value="3.11">3.11</option>
+              <option value="3.10">3.10</option>
+              <option value="3.9">3.9</option>
+              <option value="3.7">3.7</option>
+              <option value="3.6">3.6</option>
+              <option value="3.5">3.5</option>
+              <option value="3.4">3.4</option>
+              <option value="3.3">3.3</option>
+              <option value="3.2">3.2</option>
+              <option value="3.1">3.1</option>
+              <option value="3.0">3.0</option>
+          </select>
+        
+      </li>
+      <li class="hidden-xs active">
+        CLI tools
+      </li>
+      <li class="hidden-xs active"><a href="../../cli_reference/developer_cli_odo/odo-release-notes.html">Developer CLI (odo)</a></li>
+      <li class="hidden-xs active">
+        odo CLI reference
+      </li>
+      
+      <span text-align="right" style="float: right !important">
+        <a href="https://github.com/openshift/openshift-docs/commits/enterprise-latest/cli_reference/developer_cli_odo/odo-cli-reference.adoc"><span class="material-icons-outlined" title="Page history">history</span></a>
+        
+        <a href="https://github.com/openshift/openshift-docs/issues/new?title=[enterprise-latest] Issue in file cli_reference/developer_cli_odo/odo-cli-reference.adoc">
+          <span class="material-icons-outlined" title="Open an issue">bug_report</span>
+        </a>
+        <a href="javascript: void(0);" onclick="getPDF();"><span class="material-icons-outlined" title="Download PDF (may take a while for large pages)">picture_as_pdf</span></a>
+        
+        
+      </span>
+      
+    </ol>
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-8 col-sm-3 col-md-3 sidebar sidebar-offcanvas hide-for-print">
+        <div class="row-fluid">
+          <div id="btn-close">
+            <button id="hc-close-btn" onclick="closeNav()" class="close-btn-sm" aria-label="close"><span class="fa fa-times" /></button>
+          </div>
+          <div id="hc-search">
+            <input id="hc-search-input" type="text" aria-label="search">
+            <button id="hc-search-btn" aria-label="search"><span class="fa fa-search" /></button>
+          </div>
+        </div>
+        <ul class="nav nav-sidebar">
+
+<!--  the top level  groupings start here -->
+
+
+
+
+
+<!-- group_id is the one that is user selected. topic_group[id] is what we are parsing via navigation -->
+
+    <li class="nav-header">
+
+
+
+
+
+
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup0">
+        <span id="tgSpan0" class="fa fa-angle-right"></span>
+          About
+          <!-- prints out the names of the top level books with arrow down or to right
+               So in this case: Welcome 1 and Another Book -->
+      </a>
+
+
+      <!-- this then goes through all the topics within the top level groups
+      depending on whether it itself contains further topics or is a single file -->
+
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+
+
+        <!-- for each topic in this topic_group, for example in Welcome 1, what topics exist?
+        Welcome 2 and Welcome 1 More -->
+
+
+          <!-- is this is a single page? That is, does this topic have more topics?
+          Welcome 1 More -->
+
+            <!-- ^ this establishs whether we are reading this current page -->
+
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
+            <!--  if active, then highlight it,  otherwise nothing to do -->
+
+      </ul>
+    </li>
+
+<!--  the top level  groupings start here -->
+
+
+
+
+
+<!-- group_id is the one that is user selected. topic_group[id] is what we are parsing via navigation -->
+
+    <li class="nav-header">
+
+
+
+
+
+
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup1">
+        <span id="tgSpan1" class="fa fa-angle-right"></span>
+          Architecture
+          <!-- prints out the names of the top level books with arrow down or to right
+               So in this case: Welcome 1 and Another Book -->
+      </a>
+
+
+      <!-- this then goes through all the topics within the top level groups
+      depending on whether it itself contains further topics or is a single file -->
+
+      <ul id="topicGroup1" class="collapse  list-unstyled">
+
+
+        <!-- for each topic in this topic_group, for example in Welcome 1, what topics exist?
+        Welcome 2 and Welcome 1 More -->
+
+
+          <!-- is this is a single page? That is, does this topic have more topics?
+          Welcome 1 More -->
+
+            <!-- ^ this establishs whether we are reading this current page -->
+
+            <li><a class="" href="../../architecture/architecture.html">Product architecture</a></li>
+            <!--  if active, then highlight it,  otherwise nothing to do -->
+
+
+        <!-- for each topic in this topic_group, for example in Welcome 1, what topics exist?
+        Welcome 2 and Welcome 1 More -->
+
+
+            <!-- this topic contains subtopics - Welcome 2 -->
+
+
+            <!-- start a new heading area -->
+
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-1-1">
+                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>
+                  &nbsp;Nested Topic
+
+                  <!-- prints out the names of the second level books with arrow down or to right
+                  So in this case: Welcome 2 -->
+
+              </a>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
+
+                <!-- for each topic in this topic_group, in Welcome 2, what topics exist?
+                     Welcome 2 Index Page, Welcome 3 and Welcome 2 More - we list them all.. -->
+
+                
+                
+                
+                
+                
+
+                <!-- is this is a single page? That is, does this topic have more topics?
+                 Welcome 2 Index Page and Welcome 2 More -->
+
+
+
+
+                  <li>
+                    <a class="" href="../../architecture/nested/architecture-installation.html">
+                      Installation and update
+                    </a>
+                  </li>
+
+                
+
+              </ul>
+            </li>
+      </ul>
+    </li>
+
+<!--  the top level  groupings start here -->
+
+
+
+
+
+<!-- group_id is the one that is user selected. topic_group[id] is what we are parsing via navigation -->
+
+    <li class="nav-header">
+
+
+
+
+
+
+      <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicGroup2">
+        <span id="tgSpan2" class="fa fa-angle-down"></span>
+          CLI tools
+          <!-- prints out the names of the top level books with arrow down or to right
+               So in this case: Welcome 1 and Another Book -->
+      </a>
+
+
+      <!-- this then goes through all the topics within the top level groups
+      depending on whether it itself contains further topics or is a single file -->
+
+      <ul id="topicGroup2" class="collapse in list-unstyled">
+
+
+        <!-- for each topic in this topic_group, for example in Welcome 1, what topics exist?
+        Welcome 2 and Welcome 1 More -->
+
+
+            <!-- this topic contains subtopics - Welcome 2 -->
+
+
+            <!-- start a new heading area -->
+
+            <li class="nav-header">
+              <a class="" href="javascript:void(0);" data-toggle="collapse" data-target="#topicSubGroup-2-0">
+                <span id="sgSpan-2-0" class="fa fa-caret-down"></span>
+                  &nbsp;Developer CLI (odo)
+
+                  <!-- prints out the names of the second level books with arrow down or to right
+                  So in this case: Welcome 2 -->
+
+              </a>
+              <ul id="topicSubGroup-2-0" class="nav-tertiary list-unstyled collapse in">
+
+                <!-- for each topic in this topic_group, in Welcome 2, what topics exist?
+                     Welcome 2 Index Page, Welcome 3 and Welcome 2 More - we list them all.. -->
+
+                
+                
+                
+                
+                
+
+                <!-- is this is a single page? That is, does this topic have more topics?
+                 Welcome 2 Index Page and Welcome 2 More -->
+
+
+
+
+                  <li>
+                    <a class="" href="../../cli_reference/developer_cli_odo/odo-release-notes.html">
+                      odo release notes
+                    </a>
+                  </li>
+
+                
+
+
+                <!-- for each topic in this topic_group, in Welcome 2, what topics exist?
+                     Welcome 2 Index Page, Welcome 3 and Welcome 2 More - we list them all.. -->
+
+                
+                
+                
+                
+                
+
+                <!-- is this is a single page? That is, does this topic have more topics?
+                 Welcome 2 Index Page and Welcome 2 More -->
+
+
+
+
+                  <li>
+                    <a class="" href="../../cli_reference/developer_cli_odo/installing-odo.html">
+                      Installing odo
+                    </a>
+                  </li>
+
+                
+
+
+                <!-- for each topic in this topic_group, in Welcome 2, what topics exist?
+                     Welcome 2 Index Page, Welcome 3 and Welcome 2 More - we list them all.. -->
+
+                
+                
+                
+                
+                
+
+                <!-- is this is a single page? That is, does this topic have more topics?
+                 Welcome 2 Index Page and Welcome 2 More -->
+
+
+
+
+                  <li>
+                    <a class=" active" href="../../cli_reference/developer_cli_odo/odo-cli-reference.html">
+                      odo CLI reference
+                    </a>
+                  </li>
+
+                
+
+              </ul>
+            </li>
+      </ul>
+    </li>
+</ul>
+      </div>
+      <div id="hc-search-modal">
+        <div id="hc-modal-content">
+          <span id="hc-modal-close">&times;</span>
+          <div id="hc-search-results-wrapper">
+            <div id="hc-search-results"></div>
+            <div id="hc-search-progress-indicator" class="text-center search-progress-indicator"><i class="fa fa-circle-o-notch fa-spin" style="font-size:42px"></i></div>
+            <div class="text-center">
+              <button id="hc-search-more-btn">Show more results</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 main">
+        <div class="page-header">
+          <h1>
+            odo CLI reference
+          </h1>
+        </div>
+        
+        
+        <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#odo-build-images_odo-cli-reference">odo build-images</a></li>
+<li><a href="#odo-catalog_odo-cli-reference">odo catalog</a>
+<ul class="sectlevel2">
+<li><a href="#components">Components</a></li>
+<li><a href="#services">Services</a></li>
+</ul>
+</li>
+<li><a href="#odo-create_odo-cli-reference">odo create</a>
+<ul class="sectlevel2">
+<li><a href="#creating-a-component">Creating a component</a></li>
+<li><a href="#starter-projects">Starter projects</a></li>
+<li><a href="#using-an-existing-devfile">Using an existing devfile</a></li>
+<li><a href="#interactive-creation">Interactive creation</a></li>
+</ul>
+</li>
+<li><a href="#odo-delete_odo-cli-reference">odo delete</a>
+<ul class="sectlevel2">
+<li><a href="#deleting-a-component">Deleting a component</a></li>
+<li><a href="#undeploying-devfile-kubernetes-components">Undeploying Devfile Kubernetes components</a></li>
+<li><a href="#delete-everything">Delete Everything</a></li>
+<li><a href="#available-flags">Available Flags</a></li>
+</ul>
+</li>
+<li><a href="#odo-deploy_odo-cli-reference">odo deploy</a></li>
+<li><a href="#odo-init_odo-cli-reference">odo init</a>
+<ul class="sectlevel2">
+<li><a href="#interactive-mode">Interactive mode</a></li>
+<li><a href="#non-interactive-mode">Non-interactive mode</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#odo-link_odo-cli-reference">odo link</a>
+<ul class="sectlevel2">
+<li><a href="#various-linking-options">Various linking options</a></li>
+<li><a href="#examples-2">Examples</a></li>
+<li><a href="#binding-as-files">Binding as files</a></li>
+<li><a href="#bind-as-files-examples"><code>--bind-as-files</code> examples</a></li>
+</ul>
+</li>
+<li><a href="#odo-registry_odo-cli-reference">odo registry</a>
+<ul class="sectlevel2">
+<li><a href="#listing-the-registries">Listing the registries</a></li>
+<li><a href="#adding-a-registry">Adding a registry</a></li>
+<li><a href="#deleting-a-registry">Deleting a registry</a></li>
+<li><a href="#updating-a-registry">Updating a registry</a></li>
+</ul>
+</li>
+<li><a href="#odo-service_odo-cli-reference">odo service</a>
+<ul class="sectlevel2">
+<li><a href="#creating-a-new-service">Creating a new service</a></li>
+<li><a href="#deleting-a-service">Deleting a service</a></li>
+<li><a href="#listing-services-2">Listing services</a></li>
+<li><a href="#getting-information-about-a-service-2">Getting information about a service</a></li>
+</ul>
+</li>
+<li><a href="#odo-storage_odo-cli-reference">odo storage</a>
+<ul class="sectlevel2">
+<li><a href="#adding-a-storage-volume">Adding a storage volume</a></li>
+<li><a href="#listing-the-storage-volumes">Listing the storage volumes</a></li>
+<li><a href="#deleting-a-storage-volume">Deleting a storage volume</a></li>
+<li><a href="#adding-storage-to-specific-container">Adding storage to specific container</a></li>
+</ul>
+</li>
+<li><a href="#odo-flags_odo-cli-reference">Common Flags</a></li>
+<li><a href="#odo-json-output_odo-cli-reference">JSON Output</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-build-images_odo-cli-reference"><a class="anchor" href="#odo-build-images_odo-cli-reference"></a>odo build-images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>odo can build container images based on Dockerfiles, and push these images to their registries.</p>
+</div>
+<div class="paragraph">
+<p>When running the command <code>odo build-images</code>, odo searches for all components in the <code>devfile.yaml</code> with the <code>image</code> type, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">components</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">image</span><span class="pi">:</span>
+    <span class="na">imageName</span><span class="pi">:</span> <span class="s">quay.io/myusername/myimage</span>
+    <span class="na">dockerfile</span><span class="pi">:</span>
+      <span class="na">uri</span><span class="pi">:</span> <span class="s">./Dockerfile</span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">buildContext</span><span class="pi">:</span> <span class="s">${PROJECTS_ROOT}</span> <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">component-built-from-dockerfile</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>uri</code> field indicates the relative path of the Dockerfile to use, relative to the directory containing the <code>devfile.yaml</code>. The devfile specification indicates that <code>uri</code> could also be an HTTP URL, but this case is not supported by odo yet.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>buildContext</code> indicates the directory used as build context. The default value is <code>${PROJECTS_ROOT}</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For each image component, odo executes either <code>podman</code> or <code>docker</code> (the first one found, in this order), to build the image with the specified Dockerfile, build context and arguments.</p>
+</div>
+<div class="paragraph">
+<p>If the <code>--push</code> flag is passed to the command, the images are be pushed to their registries after they are built.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-catalog_odo-cli-reference"><a class="anchor" href="#odo-catalog_odo-cli-reference"></a>odo catalog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>odo</code> uses different <em>catalogs</em> to deploy <em>components</em> and <em>services</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="components"><a class="anchor" href="#components"></a>Components</h3>
+<div class="paragraph">
+<p><code>odo</code> uses the portable <em>devfile</em> format to describe the components. It can connect to various devfile registries to download devfiles for different languages and frameworks.
+See <a href="../odo-registry.html#odo-registry_odo-cli-reference"><code>odo registry</code></a> for more information.</p>
+</div>
+<div class="sect3">
+<h4 id="listing-components"><a class="anchor" href="#listing-components"></a>Listing components</h4>
+<div class="paragraph">
+<p>To list all the <em>devfiles</em> available on the different registries, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog list components</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> NAME             DESCRIPTION                          REGISTRY
+ go               Stack with the latest Go version     DefaultDevfileRegistry
+ java-maven       Upstream Maven and OpenJDK 11        DefaultDevfileRegistry
+ nodejs           Stack with Node.js 14                DefaultDevfileRegistry
+ php-laravel      Stack with Laravel 8                 DefaultDevfileRegistry
+ python           Python Stack with Python 3.7         DefaultDevfileRegistry
+ [...]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-information-about-a-component"><a class="anchor" href="#getting-information-about-a-component"></a>Getting information about a component</h4>
+<div class="paragraph">
+<p>To get more information about a specific component, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog describe component</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, running the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog describe component nodejs</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">* Registry: DefaultDevfileRegistry <i class="conum" data-value="1"></i><b>(1)</b>
+
+Starter Projects: <i class="conum" data-value="2"></i><b>(2)</b>
+---
+name: nodejs-starter
+attributes: {}
+description: ""
+subdir: ""
+projectsource:
+  sourcetype: ""
+  git:
+    gitlikeprojectsource:
+      commonprojectsource: {}
+      checkoutfrom: null
+      remotes:
+        origin: https://github.com/odo-devfiles/nodejs-ex.git
+  zip: null
+  custom: null</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><em>Registry</em> is the registry from which the devfile is retrieved.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><em>Starter projects</em> are sample projects in the same language and framework of the devfile, that can help you start a new project.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="services"><a class="anchor" href="#services"></a>Services</h3>
+<div class="paragraph">
+<p><code>odo</code> can deploy <em>services</em> with the help of <em>operators</em>.</p>
+</div>
+<div class="paragraph">
+<p>Only operators deployed with the help of the <a href="https://olm.operatorframework.io/"><em>Operator Lifecycle Manager</em></a> are supported by odo.</p>
+</div>
+<div class="sect3">
+<h4 id="listing-services"><a class="anchor" href="#listing-services"></a>Listing services</h4>
+<div class="paragraph">
+<p>You can list the available operators and their associated services running the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog list services</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> Services available through Operators
+ NAME                                 CRDs
+ postgresql-operator.v0.1.1           Backup, Database
+ redis-operator.v0.8.0                RedisCluster, Redis</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, two operators are installed in the cluster. The <code>postgresql-operator.v0.1.1</code> operator deploys services related to PostgreSQL: <code>Backup</code> and <code>Database</code>.
+The <code>redis-operator.v0.8.0</code> operator deploys services related to Redis: <code>RedisCluster</code> and <code>Redis</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To get a list of all the available operators, odo fetches the ClusterServiceVersion (CSV) resources of the current namespace that are in a <em>Succeeded</em> phase.
+For operators that support cluster-wide access, when a new namespace is created, these resources are automatically added to it. However, it may take some time before they are in the <em>Succeeded</em> phase, and odo may return an empty list until the resources are ready.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="searching-services"><a class="anchor" href="#searching-services"></a>Searching services</h4>
+<div class="paragraph">
+<p>You can search for a specific service by a keyword with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog search service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, to retrieve the Postgresql services, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog search service postgres</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> Services available through Operators
+ NAME                           CRDs
+ postgresql-operator.v0.1.1     Backup, Database</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You may see a similar list that contains only the relevant operators, whose name contains the searched keyword.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-information-about-a-service"><a class="anchor" href="#getting-information-about-a-service"></a>Getting information about a service</h4>
+<div class="paragraph">
+<p>You can get more information about a specific service with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog describe service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog describe service postgresql-operator.v0.1.1/Database</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">KIND:    Database
+VERSION: v1alpha1
+
+DESCRIPTION:
+     Database is the Schema for the the Database Database API
+
+FIELDS:
+   awsAccessKeyId (string)
+     AWS S3 accessKey/token ID
+
+     Key ID of AWS S3 storage. Default Value: nil Required to create the Secret
+     with the data to allow send the backup files to AWS S3 storage.
+[...]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A service is represented in the cluster by a CustomResourceDefinition (CRD) resource. This command will display the details about this CRD such as  <code>kind</code>, <code>version</code>, and the list of fields available to define an instance of this custom resource.</p>
+</div>
+<div class="paragraph">
+<p>The list of fields is extracted from the <em>OpenAPI schema</em> included in the CRD. This information is optional in a CRD, and if it is not present, it is extracted from the ClusterServiceVersion (CSV) resource representing the service instead.</p>
+</div>
+<div class="paragraph">
+<p>It is also possible to request the description of operator backed service, without providing CRD type information. To describe the Redis operator on a cluster, without CRD, run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog describe service redis-operator.v0.8.0</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">NAME:	redis-operator.v0.8.0
+DESCRIPTION:
+
+	A Golang based redis operator that will make/oversee Redis
+	standalone/cluster mode setup on top of the Kubernetes. It can create a
+	redis cluster setup with best practices on Cloud as well as the Bare metal
+	environment. Also, it provides an in-built monitoring capability using
+
+... (cut short for beverity)
+
+	Logging Operator is licensed under [Apache License, Version
+	2.0](https://github.com/OT-CONTAINER-KIT/redis-operator/blob/master/LICENSE)
+
+
+CRDs:
+	NAME           DESCRIPTION
+	RedisCluster   Redis Cluster
+	Redis          Redis</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-create_odo-cli-reference"><a class="anchor" href="#odo-create_odo-cli-reference"></a>odo create</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>odo</code> uses a <a href="https://devfile.io"><em>devfile</em></a> to store the configuration of a component and to describe the component&#8217;s resources such as storage and services. The <em>odo create</em> command allows you to generate this file.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-a-component"><a class="anchor" href="#creating-a-component"></a>Creating a component</h3>
+<div class="paragraph">
+<p>To create a <em>devfile</em> for an existing project, run the <code>odo create</code> command with the name and type of your component (for example, <code>nodejs</code> or <code>go</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo create nodejs mynodejs</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example, <code>nodejs</code> is the type of the component and <code>mynodejs</code> is the name of the component <code>odo</code> creates for you.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For a list of all the supported component types, run the command <code>odo catalog list components</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If your source code exists outside the current directory, the <code>--context</code> flag can be used to specify the path.
+For example, if the source for the nodejs component was in a folder called <code>node-backend</code> relative to the current working directory, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo create nodejs mynodejs --context ./node-backend</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>--context</code> flag supports relative and absolute paths.</p>
+</div>
+<div class="paragraph">
+<p>To specify the project or app where your component will be deployed, use the <code>--project</code> and <code>--app</code> flags.
+For example, to create a component that is part of the <code>myapp</code> app inside the <code>backend</code> project, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo create nodejs --app myapp --project backend</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If these flags are not specified, they will default to the active app and project.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="starter-projects"><a class="anchor" href="#starter-projects"></a>Starter projects</h3>
+<div class="paragraph">
+<p>Use the starter projects if you do not have existing source code but want to get up and running quickly to experiment with devfiles and components.
+To use a starter project, add the <code>--starter</code> flag to the <code>odo create</code> command.</p>
+</div>
+<div class="paragraph">
+<p>To get a list of available starter projects for a component type, run the <code>odo catalog describe component</code> command.
+For example, to get all available starter projects for the nodejs component type, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo catalog describe component nodejs</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then specify the desired project using the <code>--starter</code> flag on the <code>odo create</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo create nodejs --starter nodejs-starter</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will download the example template corresponding to the chosen component type, in this instance, <code>nodejs</code>.
+The template is downloaded to your current directory, or to the location specified by the <code>--context</code> flag.
+If a starter project has its own devfile, then this devfile will be preserved.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-an-existing-devfile"><a class="anchor" href="#using-an-existing-devfile"></a>Using an existing devfile</h3>
+<div class="paragraph">
+<p>If you want to create a new component from an existing devfile, you can do so by specifying the path to the devfile using the <code>--devfile</code> flag.
+For example, to create a component called <code>mynodejs</code>, based on a devfile from GitHub, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo create mynodejs --devfile https://raw.githubusercontent.com/odo-devfiles/registry/master/devfiles/nodejs/devfile.yaml</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="interactive-creation"><a class="anchor" href="#interactive-creation"></a>Interactive creation</h3>
+<div class="paragraph">
+<p>You can also run the <code>odo create</code> command interactively, to guide you through the steps needed to create a component:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo create
+
+? Which devfile component type do you wish to create go
+? What do you wish to name the new devfile component go-api
+? What project do you want the devfile component to be created in default
+Devfile Object Validation
+ ✓  Checking devfile existence [164258ns]
+ ✓  Creating a devfile component from registry: DefaultDevfileRegistry [246051ns]
+Validation
+ ✓  Validating if devfile name is correct [92255ns]
+? Do you want to download a starter project Yes
+
+Starter Project
+ ✓  Downloading starter project go-starter from https://github.com/devfile-samples/devfile-stack-go.git [429ms]
+
+Please use `odo push` command to create the component with source deployed</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You are prompted to choose the component type, name and the project for the component. You can also choose whether or not to download a starter project. Once finished, a new <code>devfile.yaml</code> file is created in the working directory.</p>
+</div>
+<div class="paragraph">
+<p>To deploy these resources to your cluster, run the command <code>odo push</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-delete_odo-cli-reference"><a class="anchor" href="#odo-delete_odo-cli-reference"></a>odo delete</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>odo delete</code> command is useful for deleting resources that are managed by odo.</p>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-component"><a class="anchor" href="#deleting-a-component"></a>Deleting a component</h3>
+<div class="paragraph">
+<p>To delete a <em>devfile</em> component, run the <code>odo delete</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo delete</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the component has been pushed to the cluster, the component is deleted from the cluster, as well as its dependant storage, URL, secrets, and other resources.
+If the component has not pushed, the command exits with an error stating that it could not find the resources on the cluster.</p>
+</div>
+<div class="paragraph">
+<p>Use <code>-f</code> or <code>--force</code> flag to avoid the confirmation questions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undeploying-devfile-kubernetes-components"><a class="anchor" href="#undeploying-devfile-kubernetes-components"></a>Undeploying Devfile Kubernetes components</h3>
+<div class="paragraph">
+<p>To undeploy the Devfile Kubernetes components deployed with <code>odo deploy</code> from the cluster, execute the <code>odo delete</code> command with <code>--deploy</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo delete <span class="nt">--deploy</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use <code>-f</code> or <code>--force</code> flag to avoid the confirmation questions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-everything"><a class="anchor" href="#delete-everything"></a>Delete Everything</h3>
+<div class="paragraph">
+<p>Run the <code>odo delete</code> command with <code>--all</code> flag to delete all artifacts including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>devfile</em> component</p>
+</li>
+<li>
+<p>Devfile Kubernetes component that was deployed using <code>odo deploy</code></p>
+</li>
+<li>
+<p>Devfile</p>
+</li>
+<li>
+<p>Local configuration</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo delete --all</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="available-flags"><a class="anchor" href="#available-flags"></a>Available Flags</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-f</code>, <code>--force</code> - Use this flag to avoid the confirmation questions.</p>
+</li>
+<li>
+<p><code>-w</code>, <code>--wait</code> - Use this flag to wait for component deletion, and any dependencies. This flag does not work when undeploying.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-deploy_odo-cli-reference"><a class="anchor" href="#odo-deploy_odo-cli-reference"></a>odo deploy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>odo</code> can be used to deploy components in a similar manner to how they would be deployed using a CI/CD system.
+First, 'odo' builds the container images, and then it deploys the Kubernetes resources required to deploy the components.</p>
+</div>
+<div class="paragraph">
+<p>When running the command <code>odo deploy</code>, odo searches for the default command of kind <code>deploy</code> in the devfile, and executes this command.
+The kind <code>deploy</code> is supported by the devfile format starting from version 2.2.0.</p>
+</div>
+<div class="paragraph">
+<p>The <code>deploy</code> command is typically a <em>composite</em> command, composed of several <em>apply</em> commands:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A command referencing an <code>image</code> component that, when applied, will build the image of the container to deploy, and then push it to its registry.</p>
+</li>
+<li>
+<p>A command referencing a <a href="https://devfile.io/docs/devfile/2.2.0/user-guide/adding-kubernetes-component-to-a-devfile.html"><code>kubernetes</code> component</a> that, when applied, will create a Kubernetes resource in the cluster.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With the following example <code>devfile.yaml</code> file, a container image is built using the <code>Dockerfile</code> present in the directory.
+The image is pushed to its registry and then a Kubernetes Deployment resource is created in the cluster, using this freshly built image.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">schemaVersion: 2.2.0
+[...]
+variables:
+  CONTAINER_IMAGE: quay.io/phmartin/myimage
+commands:
+  - id: build-image
+    apply:
+      component: outerloop-build
+  - id: deployk8s
+    apply:
+      component: outerloop-deploy
+  - id: deploy
+    composite:
+      commands:
+        - build-image
+        - deployk8s
+      group:
+        kind: deploy
+        isDefault: true
+components:
+  - name: outerloop-build
+    image:
+      imageName: "{{CONTAINER_IMAGE}}"
+      dockerfile:
+        uri: ./Dockerfile
+</span><span class="gp">        buildContext: $</span><span class="o">{</span>PROJECTS_ROOT<span class="o">}</span>
+<span class="go">  - name: outerloop-deploy
+    kubernetes:
+      inlined: |
+        kind: Deployment
+        apiVersion: apps/v1
+        metadata:
+          name: my-component
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: node-app
+          template:
+            metadata:
+              labels:
+                app: node-app
+            spec:
+              containers:
+                - name: main
+                  image: {{CONTAINER_IMAGE}}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-init_odo-cli-reference"><a class="anchor" href="#odo-init_odo-cli-reference"></a>odo init</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you want to bootstrap a new component with <code>odo</code>, use the <code>odo init</code> command. If sources already exist, the command <code>odo dev</code> should be considered instead.</p>
+</div>
+<div class="paragraph">
+<p>The <code>odo init</code> command must be executed from an empty directory, and the command will download a <code>devfile.yaml</code> file and, optionally, a starter project.</p>
+</div>
+<div class="paragraph">
+<p>The command can be executed interactively or non-interactively.</p>
+</div>
+<div class="sect2">
+<h3 id="interactive-mode"><a class="anchor" href="#interactive-mode"></a>Interactive mode</h3>
+<div class="paragraph">
+<p>In interactive mode, you are guided to choose:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A devfile from the list of devfiles present in the registry or registries referenced (using the <code>odo registry</code> command),</p>
+</li>
+<li>
+<p>A starter project referenced by the selected devfile,</p>
+</li>
+<li>
+<p>A name for the component present in the devfile.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="non-interactive-mode"><a class="anchor" href="#non-interactive-mode"></a>Non-interactive mode</h3>
+<div class="paragraph">
+<p>In non-interactive mode, you specifiy the information needed to get a devfile on the command line.</p>
+</div>
+<div class="paragraph">
+<p>If you want to download a devfile from a registry, you must specify the devfile name with the <code>--devfile</code> flag.
+To list the available devfiles from all registries, use <code>odo catalog list component</code>. The devfile with the specified name will be searched in the registries referenced (using <code>odo registry</code>), and the first one matching will be downloaded. If you want to download the devfile from a specific registry in the list or referenced registries, you can use the <code>--devfile-registry</code> flag to specify the name of this registry.</p>
+</div>
+<div class="paragraph">
+<p>To download a devfile from a URL or from the local filesystem instead, use the <code>--devfile-path</code> option.</p>
+</div>
+<div class="paragraph">
+<p>The <code>--starter</code> flag indicates the name of the starter project, as referenced in the selected devfile, that you want to use to start your development. To see the available starter projects for a component type, use <code>odo catalog describe component &lt;component-type&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>The required <code>--name</code> flag indicates how the component initialized by this command should be named.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples"><a class="anchor" href="#examples"></a>Examples</h3>
+<div class="sect3">
+<h4 id="interactive-mode-2"><a class="anchor" href="#interactive-mode-2"></a>Interactive mode</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo init
+<span class="go">? Select language: java
+? Select project type: Maven Java (java-maven, registry: DefaultDevfileRegistry)
+? Which starter project do you want to use? springbootproject
+? Enter component name: my-java-maven-app
+ ✓  Downloading devfile "java-maven" from registry "DefaultDevfileRegistry" [949ms]
+ ✓  Downloading starter project "springbootproject" [430ms]
+
+Your new component "my-java-maven-app" is ready in the current directory.
+To start editing your component, use "odo dev" and open this folder in your favorite IDE.
+Changes will be directly reflected on the cluster.
+To deploy your component to a cluster use "odo deploy".</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="non-interactive-mode-from-any-registry-of-the-list"><a class="anchor" href="#non-interactive-mode-from-any-registry-of-the-list"></a>Non-interactive mode from any registry of the list</h4>
+<div class="paragraph">
+<p>In this example, the devfile is downloaded from the <strong>Staging</strong> registry, which is the first one in the list containing the <code>nodejs-react</code> devfile.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry list</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">NAME                       URL                                   SECURE
+Staging                    https://registry.stage.devfile.io     No
+DefaultDevfileRegistry     https://registry.devfile.io           No</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo init <span class="nt">--name</span> my-react-app <span class="nt">--devfile</span> nodejs-react <span class="nt">--starter</span> nodejs-react-starter</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> ✓  Downloading devfile "nodejs-react" [997ms]
+ ✓  Downloading starter project "nodejs-react-starter" [506ms]
+
+Your new component "my-react-app" is ready in the current directory.
+To start editing your component, use "odo dev" and open this folder in your favorite IDE.
+Changes will be directly reflected on the cluster.
+To deploy your component to a cluster use "odo deploy".</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="non-interactive-mode-from-a-specific-registry-of-the-list"><a class="anchor" href="#non-interactive-mode-from-a-specific-registry-of-the-list"></a>Non-interactive mode from a specific registry of the list</h4>
+<div class="paragraph">
+<p>In this example, the devfile is downloaded from the <strong>DefaultDevfileRegistry</strong> registry, as explicitly indicated by the <code>--devfile-registry</code> flag.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry list</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">NAME                       URL                                   SECURE
+Staging                    https://registry.stage.devfile.io     No
+DefaultDevfileRegistry     https://registry.devfile.io           No</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo init <span class="nt">--name</span> my-spring-app <span class="nt">--devfile</span> java-springboot <span class="nt">--devfile-registry</span> DefaultDevfileRegistry <span class="nt">--starter</span> springbootproject</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> ✓  Downloading devfile "java-springboot" from registry "DefaultDevfileRegistry" [980ms]
+ ✓  Downloading starter project "springbootproject" [399ms]
+
+Your new component "my-spring-app" is ready in the current directory.
+To start editing your component, use "odo dev" and open this folder in your favorite IDE.
+Changes will be directly reflected on the cluster.
+To deploy your component to a cluster use "odo deploy".</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="non-interactive-mode-from-a-url"><a class="anchor" href="#non-interactive-mode-from-a-url"></a>Non-interactive mode from a URL</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo init <span class="nt">--devfile-path</span> https://registry.devfile.io/devfiles/nodejs-angular <span class="nt">--name</span> my-nodejs-app <span class="nt">--starter</span> nodejs-angular-starter</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> ✓  Downloading devfile from "https://registry.devfile.io/devfiles/nodejs-angular" [415ms]
+ ✓  Downloading starter project "nodejs-angular-starter" [484ms]
+
+Your new component "my-nodejs-app" is ready in the current directory.
+To start editing your component, use "odo dev" and open this folder in your favorite IDE.
+Changes will be directly reflected on the cluster.
+To deploy your component to a cluster use "odo deploy".</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-link_odo-cli-reference"><a class="anchor" href="#odo-link_odo-cli-reference"></a>odo link</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>odo link</code> command helps link an odo component to an Operator-backed service or another odo component. It does this by using the <a href="https://github.com/redhat-developer/service-binding-operator">Service Binding Operator</a>. At the time of writing this, odo makes use of the Service Binding library and not the Operator itself to achieve the desired functionality.</p>
+</div>
+<div class="sect2">
+<h3 id="various-linking-options"><a class="anchor" href="#various-linking-options"></a>Various linking options</h3>
+<div class="paragraph">
+<p>odo provides various options for linking a component with an Operator-backed service or another odo component. All these options (or flags) can be used irrespective of whether you are linking a component to a service or to another component.</p>
+</div>
+<div class="sect3">
+<h4 id="default-behaviour"><a class="anchor" href="#default-behaviour"></a>Default behaviour</h4>
+<div class="paragraph">
+<p>By default, <code>odo link</code> creates a directory named <code>kubernetes/</code> in your component directory and stores the information (YAML manifests) about services and links in it. When you use <code>odo push</code>, odo compares these manifests with the state of the resources on the Kubernetes cluster and decides whether it needs to create, modify or destroy resources to match what is specified by the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="the-inlined-flag"><a class="anchor" href="#the-inlined-flag"></a>The <code>--inlined</code> flag</h4>
+<div class="paragraph">
+<p>If you specified <code>--inlined</code> flag to the <code>odo link</code> command, odo will store the link information inline in the <code>devfile.yaml</code> in the component directory, instead of creating a file under <code>kubernetes/</code> directory. The behaviour of <code>--inlined</code> flag is similar in both the <code>odo link</code> and <code>odo service create</code> commands. This flag is helpful if you would like everything to be stored in a single <code>devfile.yaml</code>. You have to remember to use <code>--inlined</code> flag with each <code>odo link</code> and <code>odo service create</code> commands that you execute for the component.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="the-map-flag"><a class="anchor" href="#the-map-flag"></a>The <code>--map</code> flag</h4>
+<div class="paragraph">
+<p>At times, you might want to add more binding information to the component, in addition to what is available by default. For example, if you are linking the component with a service and would like to bind some information from the service&#8217;s spec (short for specification), you could use the <code>--map</code> flag. Note that odo does not do any validation against the spec of the service or component being linked. Using this flag is only recommended if you are comfortable with reading the Kubernetes YAML manifests.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="the-bind-as-files-flag"><a class="anchor" href="#the-bind-as-files-flag"></a>The <code>--bind-as-files</code> flag</h4>
+<div class="paragraph">
+<p>For all the linking options discussed so far, odo injects the binding information into the component as environment variables. If you would like to instead mount this information as files, you could use the <code>--bind-as-files</code> flag. This will make odo inject the binding information as files into the <code>/bindings</code> location within your component&#8217;s Pod. Comparing with the environment variables paradigm, when you use <code>--bind-as-files</code>, the files are named after the keys and the value of these keys is stored as the contents of these files.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-2"><a class="anchor" href="#examples-2"></a>Examples</h3>
+<div class="sect3">
+<h4 id="default-odo-link"><a class="anchor" href="#default-odo-link"></a>Default <code>odo link</code></h4>
+<div class="paragraph">
+<p>In the following example, the backend component is linked with the Postgres service using the default <code>odo link</code> command. For the backend component, make sure that your component and service are pushed to the cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo list</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">APP     NAME        PROJECT       TYPE       STATE      MANAGED BY ODO
+app     backend     myproject     spring     Pushed     Yes</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service list
+<span class="go">NAME                      MANAGED BY ODO     STATE      AGE
+PostgresCluster/hippo     Yes (backend)      Pushed     59m41s</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, run <code>odo link</code> to link the backend component with the Postgres service:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo link PostgresCluster/hippo</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> ✓  Successfully created link between component "backend" and service "PostgresCluster/hippo"
+
+To apply the link, please use `odo push`</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And then run <code>odo push</code> for the link to actually get created on the Kubernetes cluster.</p>
+</div>
+<div class="paragraph">
+<p>Upon successful <code>odo push</code>, you can notice a few things:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When you open the URL for the application deployed by backend component, it shows you a list of todo items in the database. For example, for below <code>odo url list</code> output, we will append the path where todos are listed:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">  $</span><span class="w"> </span>odo url list
+<span class="go">  Found the following URLs for component backend
+  NAME         STATE      URL                                       PORT     SECURE     KIND
+  8080-tcp     Pushed     http://8080-tcp.192.168.39.112.nip.io     8080     false      ingress</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The correct path for such URL would be - <a href="http://8080-tcp.192.168.39.112.nip.io/api/v1/todos" class="bare">http://8080-tcp.192.168.39.112.nip.io/api/v1/todos</a>. Note that exact URL would be different for your setup. Also note that there are no todos in the database unless you add some, so the URL might just show an empty JSON object.</p>
+</div>
+</li>
+<li>
+<p>You can see binding information related to Postgres service injected into the backend component. This binding information is injected, by default, as environment variables. You can check it out using the <code>odo describe</code> command from backend component&#8217;s directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w">  </span>odo describe</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo describe
+<span class="go">
+Component Name: backend
+Type: spring
+Environment Variables:
+  · PROJECTS_ROOT=/projects
+  · PROJECT_SOURCE=/projects
+  · DEBUG_PORT=5858
+Storage:
+  · m2 of size 3Gi mounted to /home/user/.m2
+URLs:
+  · http://8080-tcp.192.168.39.112.nip.io exposed via 8080
+Linked Services:
+  · PostgresCluster/hippo
+    Environment Variables:
+    · POSTGRESCLUSTER_PGBOUNCER-EMPTY
+    · POSTGRESCLUSTER_PGBOUNCER.INI
+    · POSTGRESCLUSTER_ROOT.CRT
+    · POSTGRESCLUSTER_VERIFIER
+    · POSTGRESCLUSTER_ID_ECDSA
+    · POSTGRESCLUSTER_PGBOUNCER-VERIFIER
+    · POSTGRESCLUSTER_TLS.CRT
+    · POSTGRESCLUSTER_PGBOUNCER-URI
+    · POSTGRESCLUSTER_PATRONI.CRT-COMBINED
+    · POSTGRESCLUSTER_USER
+    · pgImage
+    · pgVersion
+    · POSTGRESCLUSTER_CLUSTERIP
+    · POSTGRESCLUSTER_HOST
+    · POSTGRESCLUSTER_PGBACKREST_REPO.CONF
+    · POSTGRESCLUSTER_PGBOUNCER-USERS.TXT
+    · POSTGRESCLUSTER_SSH_CONFIG
+    · POSTGRESCLUSTER_TLS.KEY
+    · POSTGRESCLUSTER_CONFIG-HASH
+    · POSTGRESCLUSTER_PASSWORD
+    · POSTGRESCLUSTER_PATRONI.CA-ROOTS
+    · POSTGRESCLUSTER_DBNAME
+    · POSTGRESCLUSTER_PGBOUNCER-PASSWORD
+    · POSTGRESCLUSTER_SSHD_CONFIG
+    · POSTGRESCLUSTER_PGBOUNCER-FRONTEND.KEY
+    · POSTGRESCLUSTER_PGBACKREST_INSTANCE.CONF
+    · POSTGRESCLUSTER_PGBOUNCER-FRONTEND.CA-ROOTS
+    · POSTGRESCLUSTER_PGBOUNCER-HOST
+    · POSTGRESCLUSTER_PORT
+    · POSTGRESCLUSTER_ROOT.KEY
+    · POSTGRESCLUSTER_SSH_KNOWN_HOSTS
+    · POSTGRESCLUSTER_URI
+    · POSTGRESCLUSTER_PATRONI.YAML
+    · POSTGRESCLUSTER_DNS.CRT
+    · POSTGRESCLUSTER_DNS.KEY
+    · POSTGRESCLUSTER_ID_ECDSA.PUB
+    · POSTGRESCLUSTER_PGBOUNCER-FRONTEND.CRT
+    · POSTGRESCLUSTER_PGBOUNCER-PORT
+    · POSTGRESCLUSTER_CA.CRT</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Few of these variables are used in the backend component&#8217;s <a href="https://github.com/dharmit/odo-quickstart/blob/main/backend/src/main/resources/application.properties"><code>src/main/resources/application.properties</code> file</a> so that the Java Springboot application can connect to the Postgres database service.</p>
+</div>
+</li>
+<li>
+<p>Lastly, odo has created a directory called <code>kubernetes/</code> in your backend component&#8217;s directory which contains the following files.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">  $</span><span class="w"> </span><span class="nb">ls </span>kubernetes
+<span class="go">  odo-service-backend-postgrescluster-hippo.yaml  odo-service-hippo.yaml</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This files contains the information (YAML manifests) about two things:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>odo-service-hippo.yaml</code> - the Postgres service we created using <code>odo service create --from-file ../postgrescluster.yaml</code> command.</p>
+</li>
+<li>
+<p><code>odo-service-backend-postgrescluster-hippo.yaml</code> - the link we created using <code>odo link</code> command.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="odo-link-with-inlined"><a class="anchor" href="#odo-link-with-inlined"></a><code>odo link</code> with <code>--inlined</code></h4>
+<div class="paragraph">
+<p>Using <code>--inlined</code> flag with <code>odo link</code> command does the exact same thing to our application (that is, injects binding information) as an <code>odo link</code> command without the flag does. However, the subtle difference is that in above case there are two manifest files under <code>kubernetes/</code> directory - one for the Postgres service and other for the link between the backend component and this service. However, when you pass <code>--inlined</code> flag, odo does not create a file under <code>kubernetes/</code> directory to store the YAML manifest, but stores it inline in the <code>devfile.yaml</code> file.</p>
+</div>
+<div class="paragraph">
+<p>To see this, unlink our component from the Postgres service first:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">unlink </span>PostgresCluster/hippo</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> ✓  Successfully unlinked component "backend" from service "PostgresCluster/hippo"
+
+To apply the changes, please use `odo push`</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To unlink them on the cluster, run <code>odo push</code>. Now if you inspect the <code>kubernetes/</code> directory, you see only one file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span><span class="nb">ls </span>kubernetes
+<span class="go">odo-service-hippo.yaml</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, use the <code>--inlined</code> flag to create a link:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">link </span>PostgresCluster/hippo <span class="nt">--inlined</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> ✓  Successfully created link between component "backend" and service "PostgresCluster/hippo"
+
+To apply the link, please use `odo push`</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You need to do <code>odo push</code> for the link to get created on the cluster, similar to like the procedure that omits the <code>--inlined</code> flag. odo stores the configuration in <code>devfile.yaml</code>. In this file, you can see an entry like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"> <span class="na">kubernetes</span><span class="pi">:</span>
+    <span class="na">inlined</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">apiVersion: binding.operators.coreos.com/v1alpha1</span>
+      <span class="s">kind: ServiceBinding</span>
+      <span class="s">metadata:</span>
+        <span class="s">creationTimestamp: null</span>
+        <span class="s">name: backend-postgrescluster-hippo</span>
+      <span class="s">spec:</span>
+        <span class="s">application:</span>
+          <span class="s">group: apps</span>
+          <span class="s">name: backend-app</span>
+          <span class="s">resource: deployments</span>
+          <span class="s">version: v1</span>
+        <span class="s">bindAsFiles: false</span>
+        <span class="s">detectBindingResources: true</span>
+        <span class="s">services:</span>
+        <span class="s">- group: postgres-operator.crunchydata.com</span>
+          <span class="s">id: hippo</span>
+          <span class="s">kind: PostgresCluster</span>
+          <span class="s">name: hippo</span>
+          <span class="s">version: v1beta1</span>
+      <span class="s">status:</span>
+        <span class="s">secret: ""</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">backend-postgrescluster-hippo</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now if you were to run <code>odo unlink PostgresCluster/hippo</code>, odo would first remove the link information from the <code>devfile.yaml</code>, and then a subsequent <code>odo push</code> would delete the link from the cluster.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="custom-bindings"><a class="anchor" href="#custom-bindings"></a>Custom bindings</h4>
+<div class="paragraph">
+<p><code>odo link</code> accepts the flag <code>--map</code> which can inject custom binding information into the component. Such binding information will be fetched from the manifest of the resource you are linking to your component. For example, in the context of the backend component and Postgres service, you can inject information from the Postgres service&#8217;s manifest (<a href="https://github.com/dharmit/odo-quickstart/blob/main/postgrescluster.yaml"><code>postgrescluster.yaml</code> file</a>) into the backend component.</p>
+</div>
+<div class="paragraph">
+<p>If the name of your <code>PostgresCluster</code> service is <code>hippo</code> (or the output of <code>odo service list</code> if your PostgresCluster service is named differently), if you want to inject the value of <code>postgresVersion</code> from that YAML definition into your backend component, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">link </span>PostgresCluster/hippo <span class="nt">--map</span> <span class="nv">pgVersion</span><span class="o">=</span><span class="s1">'{{ .hippo.spec.postgresVersion }}'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that, if the name of your Postgres service is different from <code>hippo</code>, you will have to specify that in the above command in the place of <code>.hippo</code> in the pgVersion value.</p>
+</div>
+<div class="paragraph">
+<p>After a link operation, run <code>odo push</code> as usual. Upon successful completion of push operation, you can run the following command from your backend component directory, to validate if the custom mapping got injected properly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo exec -- env | grep pgVersion</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">pgVersion=13</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since you might want to inject more than just one piece of custom binding information, <code>odo link</code> accepts multiple key-value pairs of mappings. The only constraint is that these should be specified as <code>--map &lt;key&gt;=&lt;value&gt;</code>. For example, if you want to also inject Postgres image information along with the version, you could run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">link </span>PostgresCluster/hippo <span class="nt">--map</span> <span class="nv">pgVersion</span><span class="o">=</span><span class="s1">'{{ .hippo.spec.postgresVersion }}'</span> <span class="nt">--map</span> <span class="nv">pgImage</span><span class="o">=</span><span class="s1">'{{ .hippo.spec.image }}'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and run <code>odo push</code>. To validate if both the mappings got injected correctly, run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">exec</span> <span class="nt">--</span> <span class="nb">env</span> | <span class="nb">grep</span> <span class="nt">-e</span> <span class="s2">"pgVersion</span><span class="se">\|</span><span class="s2">pgImage"</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">pgVersion=13
+pgImage=registry.developers.crunchydata.com/crunchydata/crunchy-postgres-ha:centos8-13.4-0</span></code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="to-inline-or-not"><a class="anchor" href="#to-inline-or-not"></a>To inline or not?</h5>
+<div class="paragraph">
+<p>You can accept the default behavior where <code>odo link</code> generate a manifests file for the link under <code>kubernetes/</code> directory. Altrnatively, you can use the <code>--inlined</code> flag if you prefer to store everything in a single <code>devfile.yaml</code> file.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="binding-as-files"><a class="anchor" href="#binding-as-files"></a>Binding as files</h3>
+<div class="paragraph">
+<p>Another helpful flag that <code>odo link</code> provides is <code>--bind-as-files</code>. When this flag is passed, the binding information is not injected into the component&#8217;s Pod as environment variables but is mounted as a filesystem.</p>
+</div>
+<div class="paragraph">
+<p>Ensure that there are no existing links between the backend component and the Postgres service. You could do this by running <code>odo describe</code> in the backend component&#8217;s directory and check if you see something like below in the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">Linked Services:
+ · PostgresCluster/hippo</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unlink the service from the component using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">unlink </span>PostgresCluster/hippo
+<span class="gp">$</span><span class="w"> </span>odo push</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bind-as-files-examples"><a class="anchor" href="#bind-as-files-examples"></a><code>--bind-as-files</code> examples</h3>
+<div class="sect3">
+<h4 id="with-default-odo-link"><a class="anchor" href="#with-default-odo-link"></a>With default <code>odo link</code></h4>
+<div class="paragraph">
+<p>By default, odo creates the manifest file under <code>kubernetes/</code> directory for storing the link information. Link the backend component and Postgres service using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">link </span>PostgresCluster/hippo <span class="nt">--bind-as-files</span>
+<span class="gp">$</span><span class="w"> </span>odo push</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example <code>odo describe</code> output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo describe
+<span class="go">
+Component Name: backend
+Type: spring
+Environment Variables:
+ · PROJECTS_ROOT=/projects
+ · PROJECT_SOURCE=/projects
+ · DEBUG_PORT=5858
+ · SERVICE_BINDING_ROOT=/bindings
+ · SERVICE_BINDING_ROOT=/bindings
+Storage:
+ · m2 of size 3Gi mounted to /home/user/.m2
+URLs:
+ · http://8080-tcp.192.168.39.112.nip.io exposed via 8080
+Linked Services:
+ · PostgresCluster/hippo
+   Files:
+    · /bindings/backend-postgrescluster-hippo/pgbackrest_instance.conf
+    · /bindings/backend-postgrescluster-hippo/user
+    · /bindings/backend-postgrescluster-hippo/ssh_known_hosts
+    · /bindings/backend-postgrescluster-hippo/clusterIP
+    · /bindings/backend-postgrescluster-hippo/password
+    · /bindings/backend-postgrescluster-hippo/patroni.yaml
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-frontend.crt
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-host
+    · /bindings/backend-postgrescluster-hippo/root.key
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-frontend.key
+    · /bindings/backend-postgrescluster-hippo/pgbouncer.ini
+    · /bindings/backend-postgrescluster-hippo/uri
+    · /bindings/backend-postgrescluster-hippo/config-hash
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-empty
+    · /bindings/backend-postgrescluster-hippo/port
+    · /bindings/backend-postgrescluster-hippo/dns.crt
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-uri
+    · /bindings/backend-postgrescluster-hippo/root.crt
+    · /bindings/backend-postgrescluster-hippo/ssh_config
+    · /bindings/backend-postgrescluster-hippo/dns.key
+    · /bindings/backend-postgrescluster-hippo/host
+    · /bindings/backend-postgrescluster-hippo/patroni.crt-combined
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-frontend.ca-roots
+    · /bindings/backend-postgrescluster-hippo/tls.key
+    · /bindings/backend-postgrescluster-hippo/verifier
+    · /bindings/backend-postgrescluster-hippo/ca.crt
+    · /bindings/backend-postgrescluster-hippo/dbname
+    · /bindings/backend-postgrescluster-hippo/patroni.ca-roots
+    · /bindings/backend-postgrescluster-hippo/pgbackrest_repo.conf
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-port
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-verifier
+    · /bindings/backend-postgrescluster-hippo/id_ecdsa
+    · /bindings/backend-postgrescluster-hippo/id_ecdsa.pub
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-password
+    · /bindings/backend-postgrescluster-hippo/pgbouncer-users.txt
+    · /bindings/backend-postgrescluster-hippo/sshd_config
+    · /bindings/backend-postgrescluster-hippo/tls.crt</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Everything that was an environment variable in the <code>key=value</code> format in the earlier <code>odo describe</code> output is now mounted as file. Use the <code>cat</code> command to view the contents of some of these files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">exec</span> <span class="nt">--</span> <span class="nb">cat</span> /bindings/backend-postgrescluster-hippo/password</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">q({JC:jn^mm/Bw}eu+j.GX{k</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">exec</span> <span class="nt">--</span> <span class="nb">cat</span> /bindings/backend-postgrescluster-hippo/user</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">hippo</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">exec</span> <span class="nt">--</span> <span class="nb">cat</span> /bindings/backend-postgrescluster-hippo/clusterIP</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">10.101.78.56</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="with-inlined"><a class="anchor" href="#with-inlined"></a>With <code>--inlined</code></h4>
+<div class="paragraph">
+<p>The result of using <code>--bind-as-files</code> and <code>--inlined</code> together is similar to <code>odo link --inlined</code>. The manifest of the link gets stored in the <code>devfile.yaml</code>, instead of being stored in a separate file under <code>kubernetes/</code> directory. Other than that, the <code>odo describe</code> output would be the same as earlier.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="custom-bindings-2"><a class="anchor" href="#custom-bindings-2"></a>Custom bindings</h4>
+<div class="paragraph">
+<p>When you pass custom bindings while linking the backend component with the Postgres service, these custom bindings are injected not as environment variables but mounted as files. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">link </span>PostgresCluster/hippo <span class="nt">--map</span> <span class="nv">pgVersion</span><span class="o">=</span><span class="s1">'{{ .hippo.spec.postgresVersion }}'</span> <span class="nt">--map</span> <span class="nv">pgImage</span><span class="o">=</span><span class="s1">'{{ .hippo.spec.image }}'</span> <span class="nt">--bind-as-files</span>
+<span class="gp">$</span><span class="w"> </span>odo push</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These custom bindings get mounted as files instead of being injected as environment variables. To validate that this worked:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">exec</span> <span class="nt">--</span> <span class="nb">cat</span> /bindings/backend-postgrescluster-hippo/pgVersion</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">13</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo <span class="nb">exec</span> <span class="nt">--</span> <span class="nb">cat</span> /bindings/backend-postgrescluster-hippo/pgImage</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">registry.developers.crunchydata.com/crunchydata/crunchy-postgres-ha:centos8-13.4-0</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-registry_odo-cli-reference"><a class="anchor" href="#odo-registry_odo-cli-reference"></a>odo registry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>odo uses the portable <em>devfile</em> format to describe the components. odo can connect to various devfile registries to download devfiles for different languages and frameworks.</p>
+</div>
+<div class="paragraph">
+<p>You can connect to publicly available devfile registries, or you can install your own <a href="/docs/architecture/secure-registry">Secure Registry</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>odo registry</code> command to manage the registries that are used by odo to retrieve devfile information.</p>
+</div>
+<div class="sect2">
+<h3 id="listing-the-registries"><a class="anchor" href="#listing-the-registries"></a>Listing the registries</h3>
+<div class="paragraph">
+<p>You can use the following command to list the registries currently contacted by odo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry list</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go"> NAME                       URL                             SECURE
+ DefaultDevfileRegistry     https://registry.devfile.io     No
+
+</span><span class="gp">`DefaultDevfileRegistry` is the default registry used by odo;</span><span class="w"> </span>it is provided by the https://devfile.io[devfile.io] project.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-registry"><a class="anchor" href="#adding-a-registry"></a>Adding a registry</h3>
+<div class="paragraph">
+<p>You can use the following command to add a registry:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry add</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry add StageRegistry https://registry.stage.devfile.io
+<span class="go">New registry successfully added</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are deploying your own Secure Registry, you can specify the personal access token to authenticate to the secure registry with the <code>--token</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry add MyRegistry https://myregistry.example.com <span class="nt">--token</span> &lt;access_token&gt;
+<span class="go">New registry successfully added</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-registry"><a class="anchor" href="#deleting-a-registry"></a>Deleting a registry</h3>
+<div class="paragraph">
+<p>You can delete a registry with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry delete</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo registry delete StageRegistry
+<span class="go">? Are you sure you want to delete registry "StageRegistry" Yes
+Successfully deleted registry</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use the <code>--force</code> (or <code>-f</code>) flag to force the deletion of the registry without confirmation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="updating-a-registry"><a class="anchor" href="#updating-a-registry"></a>Updating a registry</h3>
+<div class="paragraph">
+<p>You can update the URL and/or the personal access token of a registry already registered with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">odo registry update</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp"> $</span><span class="w"> </span>odo registry update MyRegistry https://otherregistry.example.com <span class="nt">--token</span> &lt;other_access_token&gt;
+<span class="go"> ? Are you sure you want to update registry "MyRegistry" Yes
+ Successfully updated registry</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use the <code>--force</code> (or <code>-f</code>) flag to force the update of the registry without confirmation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-service_odo-cli-reference"><a class="anchor" href="#odo-service_odo-cli-reference"></a>odo service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>odo can deploy <em>services</em> with the help of <em>operators</em>.</p>
+</div>
+<div class="paragraph">
+<p>The list of available operators and services available for installation can be found using the <code>odo catalog</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Services are created in the context of a <em>component</em>, so run <code>odo create</code> before you deploy services.</p>
+</div>
+<div class="paragraph">
+<p>A service is deployed using two steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Define the service and store its definition in the devfile,</p>
+</li>
+<li>
+<p>Deploy the defined service to the cluster, using <code>odo push</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="creating-a-new-service"><a class="anchor" href="#creating-a-new-service"></a>Creating a new service</h3>
+<div class="paragraph">
+<p>You can create a new service with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service create</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, to create an instance of a Redis service named <code>my-redis-service</code>, you can run:</p>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo catalog list services
+<span class="go">Services available through Operators
+NAME                      CRDs
+redis-operator.v0.8.0     RedisCluster, Redis
+
+</span><span class="gp">$</span><span class="w"> </span>odo service create redis-operator.v0.8.0/Redis my-redis-service
+<span class="gp">Successfully added service to the configuration;</span><span class="w"> </span><span class="k">do</span> <span class="s1">'odo push'</span> to create service on the cluster</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command creates a Kubernetes manifest in the <code>kubernetes/</code> directory, containing the definition of the service, and this file is referenced from the <code>devfile.yaml</code> file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span><span class="nb">cat </span>kubernetes/odo-service-my-redis-service.yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"> <span class="na">apiVersion</span><span class="pi">:</span> <span class="s">redis.redis.opstreelabs.in/v1beta1</span>
+ <span class="na">kind</span><span class="pi">:</span> <span class="s">Redis</span>
+ <span class="na">metadata</span><span class="pi">:</span>
+   <span class="na">name</span><span class="pi">:</span> <span class="s">my-redis-service</span>
+ <span class="na">spec</span><span class="pi">:</span>
+   <span class="na">kubernetesConfig</span><span class="pi">:</span>
+     <span class="na">image</span><span class="pi">:</span> <span class="s">quay.io/opstree/redis:v6.2.5</span>
+     <span class="na">imagePullPolicy</span><span class="pi">:</span> <span class="s">IfNotPresent</span>
+     <span class="na">resources</span><span class="pi">:</span>
+       <span class="na">limits</span><span class="pi">:</span>
+         <span class="na">cpu</span><span class="pi">:</span> <span class="s">101m</span>
+         <span class="na">memory</span><span class="pi">:</span> <span class="s">128Mi</span>
+       <span class="na">requests</span><span class="pi">:</span>
+         <span class="na">cpu</span><span class="pi">:</span> <span class="s">101m</span>
+         <span class="na">memory</span><span class="pi">:</span> <span class="s">128Mi</span>
+     <span class="na">serviceType</span><span class="pi">:</span> <span class="s">ClusterIP</span>
+   <span class="na">redisExporter</span><span class="pi">:</span>
+     <span class="na">enabled</span><span class="pi">:</span> <span class="no">false</span>
+     <span class="na">image</span><span class="pi">:</span> <span class="s">quay.io/opstree/redis-exporter:1.0</span>
+   <span class="na">storage</span><span class="pi">:</span>
+     <span class="na">volumeClaimTemplate</span><span class="pi">:</span>
+       <span class="na">spec</span><span class="pi">:</span>
+         <span class="na">accessModes</span><span class="pi">:</span>
+         <span class="pi">-</span> <span class="s">ReadWriteOnce</span>
+         <span class="na">resources</span><span class="pi">:</span>
+           <span class="na">requests</span><span class="pi">:</span>
+             <span class="na">storage</span><span class="pi">:</span> <span class="s">1Gi</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span><span class="nb">cat </span>devfile.yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="pi">[</span><span class="nv">...</span><span class="pi">]</span>
+<span class="na">components</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">kubernetes</span><span class="pi">:</span>
+    <span class="na">uri</span><span class="pi">:</span> <span class="s">kubernetes/odo-service-my-redis-service.yaml</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">my-redis-service</span>
+<span class="pi">[</span><span class="nv">...</span><span class="pi">]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the name of the created instance is optional. If you do not provide a name, it will be the lowercase name of the service. For example, the following command creates an instance of a Redis service named <code>redis</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service create redis-operator.v0.8.0/Redis</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="inlining-the-manifest"><a class="anchor" href="#inlining-the-manifest"></a>Inlining the manifest</h4>
+<div class="paragraph">
+<p>By default, a new manifest is created in the <code>kubernetes/</code> directory, referenced from the <code>devfile.yaml</code> file. It is possible to inline the manifest inside the <code>devfile.yaml</code> file using the <code>--inlined</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service create redis-operator.v0.8.0/Redis my-redis-service <span class="nt">--inlined</span>
+<span class="gp">Successfully added service to the configuration;</span><span class="w"> </span><span class="k">do</span> <span class="s1">'odo push'</span> to create service on the cluster</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span><span class="nb">cat </span>devfile.yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="pi">[</span><span class="nv">...</span><span class="pi">]</span>
+<span class="na">components</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">kubernetes</span><span class="pi">:</span>
+    <span class="na">inlined</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">apiVersion: redis.redis.opstreelabs.in/v1beta1</span>
+      <span class="s">kind: Redis</span>
+      <span class="s">metadata:</span>
+        <span class="s">name: my-redis-service</span>
+      <span class="s">spec:</span>
+        <span class="s">kubernetesConfig:</span>
+          <span class="s">image: quay.io/opstree/redis:v6.2.5</span>
+          <span class="s">imagePullPolicy: IfNotPresent</span>
+          <span class="s">resources:</span>
+            <span class="s">limits:</span>
+              <span class="s">cpu: 101m</span>
+              <span class="s">memory: 128Mi</span>
+            <span class="s">requests:</span>
+              <span class="s">cpu: 101m</span>
+              <span class="s">memory: 128Mi</span>
+          <span class="s">serviceType: ClusterIP</span>
+        <span class="s">redisExporter:</span>
+          <span class="s">enabled: false</span>
+          <span class="s">image: quay.io/opstree/redis-exporter:1.0</span>
+        <span class="s">storage:</span>
+          <span class="s">volumeClaimTemplate:</span>
+            <span class="s">spec:</span>
+              <span class="s">accessModes:</span>
+              <span class="s">- ReadWriteOnce</span>
+              <span class="s">resources:</span>
+                <span class="s">requests:</span>
+                  <span class="s">storage: 1Gi</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">my-redis-service</span>
+<span class="pi">[</span><span class="nv">...</span><span class="pi">]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-the-service"><a class="anchor" href="#configuring-the-service"></a>Configuring the service</h4>
+<div class="paragraph">
+<p>Without specific customization, the service will be created with a default configuration. You can use either command-line arguments or a file to specify your own configuration.</p>
+</div>
+<div class="sect4">
+<h5 id="using-command-line-arguments"><a class="anchor" href="#using-command-line-arguments"></a>Using command-line arguments</h5>
+<div class="paragraph">
+<p>You can use the <code>--parameters</code> (or <code>-p</code>) flag to specify your own configuration.</p>
+</div>
+<div class="paragraph">
+<p>The following example configures the Redis service with three parameters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service create redis-operator.v0.8.0/Redis my-redis-service <span class="se">\</span>
+    <span class="nt">-p</span> kubernetesConfig.image<span class="o">=</span>quay.io/opstree/redis:v6.2.5 <span class="se">\</span>
+    <span class="nt">-p</span> kubernetesConfig.serviceType<span class="o">=</span>ClusterIP <span class="se">\</span>
+    <span class="nt">-p</span> redisExporter.image<span class="o">=</span>quay.io/opstree/redis-exporter:1.0
+<span class="gp">Successfully added service to the configuration;</span><span class="w"> </span><span class="k">do</span> <span class="s1">'odo push'</span> to create service on the cluster</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span><span class="nb">cat </span>kubernetes/odo-service-my-redis-service.yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">redis.redis.opstreelabs.in/v1beta1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Redis</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">my-redis-service</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">kubernetesConfig</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">quay.io/opstree/redis:v6.2.5</span>
+    <span class="na">serviceType</span><span class="pi">:</span> <span class="s">ClusterIP</span>
+  <span class="na">redisExporter</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">quay.io/opstree/redis-exporter:1.0</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can obtain the possible parameters for a specific service using the <code>odo catalog describe service</code> command.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="using-a-file"><a class="anchor" href="#using-a-file"></a>Using a file</h5>
+<div class="paragraph">
+<p>You can use a YAML manifest to specify your own specification.</p>
+</div>
+<div class="paragraph">
+<p>In the following example, the Redis service is configured with three parameters.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a manifest:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span><span class="nb">cat</span> <span class="o">&gt;</span> my-redis.yaml <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+</span><span class="go">apiVersion: redis.redis.opstreelabs.in/v1beta1
+kind: Redis
+metadata:
+  name: my-redis-service
+spec:
+  kubernetesConfig:
+    image: quay.io/opstree/redis:v6.2.5
+    serviceType: ClusterIP
+  redisExporter:
+    image: quay.io/opstree/redis-exporter:1.0
+EOF</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the service from the manifest:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service create <span class="nt">--from-file</span> my-redis.yaml
+<span class="gp">Successfully added service to the configuration;</span><span class="w"> </span><span class="k">do</span> <span class="s1">'odo push'</span> to create service on the cluster</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-service"><a class="anchor" href="#deleting-a-service"></a>Deleting a service</h3>
+<div class="paragraph">
+<p>You can delete a service with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service delete</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service list
+<span class="go">NAME                       MANAGED BY ODO     STATE               AGE
+Redis/my-redis-service     Yes (api)          Deleted locally     5m39s</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service delete Redis/my-redis-service
+<span class="go">? Are you sure you want to delete Redis/my-redis-service Yes
+</span><span class="gp">Service "Redis/my-redis-service" has been successfully deleted;</span><span class="w"> </span><span class="k">do</span> <span class="s1">'odo push'</span> to delete service from the cluster</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use the <code>--force</code> (or <code>-f</code>) flag to force the deletion of the service without confirmation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-services-2"><a class="anchor" href="#listing-services-2"></a>Listing services</h3>
+<div class="paragraph">
+<p>To list the services created for your component, use the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service list</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service list
+<span class="go">NAME                       MANAGED BY ODO     STATE             AGE
+Redis/my-redis-service-1   Yes (api)          Not pushed
+Redis/my-redis-service-2   Yes (api)          Pushed            52s
+Redis/my-redis-service-3   Yes (api)          Deleted locally   1m22s</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For each service, <code>STATE</code> indicates if the service has been pushed to the cluster using <code>odo push</code>, or if the service is still running on the cluster but removed from the devfile locally using <code>odo service delete</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-information-about-a-service-2"><a class="anchor" href="#getting-information-about-a-service-2"></a>Getting information about a service</h3>
+<div class="paragraph">
+<p>To get details of a service such as its kind, version, name and list of configured parameters, use the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service describe</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo service describe Redis/my-redis-service
+<span class="go">Version: redis.redis.opstreelabs.in/v1beta1
+Kind: Redis
+Name: my-redis-service
+Parameters:
+NAME                           VALUE
+kubernetesConfig.image         quay.io/opstree/redis:v6.2.5
+kubernetesConfig.serviceType   ClusterIP
+redisExporter.image            quay.io/opstree/redis-exporter:1.0</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-storage_odo-cli-reference"><a class="anchor" href="#odo-storage_odo-cli-reference"></a>odo storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>odo lets users manage storage volumes that are attached to the components. A storage volume can be either an ephemeral volume using an <code>emptyDir</code> Kubernetes volume, or a <a href="https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim">Persistent Volume Claim</a> (PVC), which is a way for users to "claim" a persistent volume (such as a GCE PersistentDisk or an iSCSI volume) without understanding the details of the particular cloud environment. The persistent storage volume can be used to persist data across restarts and rebuilds of the component.</p>
+</div>
+<div class="sect2">
+<h3 id="adding-a-storage-volume"><a class="anchor" href="#adding-a-storage-volume"></a>Adding a storage volume</h3>
+<div class="paragraph">
+<p>Add a storage volume to the cluster using the <code>odo storage create</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage create</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage create store <span class="nt">--path</span> /data <span class="nt">--size</span> 1Gi
+<span class="go">✓  Added storage store to nodejs-project-ufyy
+
+</span><span class="gp">$</span><span class="w"> </span>odo storage create tempdir <span class="nt">--path</span> /tmp <span class="nt">--size</span> 2Gi <span class="nt">--ephemeral</span>
+<span class="go">✓  Added storage tempdir to nodejs-project-ufyy
+
+Please use `odo push` command to make the storage accessible to the component</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example, the first storage volume has been mounted to the <code>/data</code> path and has a size of <code>1Gi</code>,
+and the second volume has been mounted to <code>/tmp</code> and is ephemeral.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-the-storage-volumes"><a class="anchor" href="#listing-the-storage-volumes"></a>Listing the storage volumes</h3>
+<div class="paragraph">
+<p>Check the storage volumes currently used by the component using <code>odo storage list</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage list</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage list
+<span class="go">The component 'nodejs-project-ufyy' has the following storage attached:
+NAME      SIZE     PATH      STATE
+store     1Gi      /data     Not Pushed
+tempdir   2Gi      /tmp      Not Pushed</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-storage-volume"><a class="anchor" href="#deleting-a-storage-volume"></a>Deleting a storage volume</h3>
+<div class="paragraph">
+<p>Delete a storage volume using <code>odo storage delete</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage delete</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage delete store <span class="nt">-f</span>
+<span class="go">Deleted storage store from nodejs-project-ufyy
+
+Please use `odo push` command to delete the storage from the cluster</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example, using <code>-f</code> force deletes the storage without asking user permission.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-storage-to-specific-container"><a class="anchor" href="#adding-storage-to-specific-container"></a>Adding storage to specific container</h3>
+<div class="paragraph">
+<p>If your devfile has multiple containers, you can specify  which container you want the storage to attach to, using the <code>--container</code> flag in the <code>odo storage create</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The following example is an excerpt from a devfile with multiple containers :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">components</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">runtime</span>
+    <span class="na">container</span><span class="pi">:</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">registry.access.redhat.com/ubi8/nodejs-12:1-36</span>
+      <span class="na">memoryLimit</span><span class="pi">:</span> <span class="s">1024Mi</span>
+      <span class="na">endpoints</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3000-tcp"</span>
+          <span class="na">targetPort</span><span class="pi">:</span> <span class="m">3000</span>
+      <span class="na">mountSources</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">funtime</span>
+    <span class="na">container</span><span class="pi">:</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">registry.access.redhat.com/ubi8/nodejs-12:1-36</span>
+      <span class="na">memoryLimit</span><span class="pi">:</span> <span class="s">1024Mi</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example, there are two containers,<code>runtime</code> and <code>funtime</code>. To attach a storage to the <code>funtime</code> container, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage create <span class="nt">--container</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage create store <span class="nt">--path</span> /data <span class="nt">--size</span> 1Gi <span class="nt">--container</span> funtime
+<span class="go">✓  Added storage store to nodejs-testing-xnfg
+
+Please use `odo push` command to make the storage accessible to the component</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can list the storage resources, using <code>odo storage list</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="gp">$</span><span class="w"> </span>odo storage list</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example output:</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="terminal"><span class="go">The component 'nodejs-testing-xnfg' has the following storage attached:
+NAME      SIZE     PATH      CONTAINER     STATE
+store     1Gi      /data     funtime       Not Pushed</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-flags_odo-cli-reference"><a class="anchor" href="#odo-flags_odo-cli-reference"></a>Common Flags</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following flags are available with most odo commands.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. <code>odo</code> flags</caption>
+<colgroup>
+<col style="width: 27.7777%;">
+<col style="width: 72.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Command</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--context</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the context directory where the component is defined</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--project</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the project for the component. Defaults to the project defined in the  local configuration. If none is available, then current project on the cluster</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--app</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the application of the component. Defaults to the application defined in the local configuration. If none is available, then <em>app</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--kubeconfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the path to the <code>kubeconfig</code> if not using the default configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--show-log</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this flag to see the logs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-f</code>, <code>--force</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this flag to tell the command not to prompt user for confirmation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-v</code>, <code>--v</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the verbosity level. See <a href="https://github.com/redhat-developer/odo/wiki/Logging-in-odo">Logging in odo</a> for more information.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-h</code>, <code>--help</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output the help for a command</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Some flags might not be available in some commands. Run the command with <code>--help</code> to get a list of all the available flags.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="odo-json-output_odo-cli-reference"><a class="anchor" href="#odo-json-output_odo-cli-reference"></a>JSON Output</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>odo</code> commands that output content generally accept a <code>-o json</code> flag to output this content in a JSON format, suitable for other programs to parse this output more easily.</p>
+</div>
+<div class="paragraph">
+<p>The output structure is similar to Kubernetes resources, with <code>kind</code>, <code>apiVersion</code>, <code>metadata</code> ,<code>spec</code> and <code>status</code> fields.</p>
+</div>
+<div class="paragraph">
+<p><em>List</em> commands return a <code>List</code> resource, containing an <code>items</code> (or similar) field listing the items of the list, with each item also being similar to Kubernetes resources.</p>
+</div>
+<div class="paragraph">
+<p><em>Delete</em> commands return a <code>Status</code> resource; see the <a href="https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/status/">Status Kubernetes resource</a>.</p>
+</div>
+<div class="paragraph">
+<p>Other commands return a resource associated with the command (<code>Application</code>, <code>Storage&#8217;, `URL</code>, etc).</p>
+</div>
+<div class="paragraph">
+<p>The full list of commands accepting the <code>-o json</code> flag is currently:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">commands</th>
+<th class="tableblock halign-left valign-top">Kind (version)</th>
+<th class="tableblock halign-left valign-top">Kind (version) of list items</th>
+<th class="tableblock halign-left valign-top">Complete content?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo application describe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo application list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo catalog list components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>missing</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo catalog list services</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ClusterServiceVersion (operators.coreos.com/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo catalog describe component</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>missing</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo catalog describe service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CRDDescription (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo component create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Component (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo component describe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Component (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo component list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Component (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo config view</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DevfileConfiguration (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo debug info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OdoDebugInfo (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo env view</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EnvInfo (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo preference view</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PreferenceList (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo project create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Project (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo project delete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status (v1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo project get</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Project (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo project list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Project (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo registry list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>missing</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo service create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo service describe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo service list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo storage create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo storage delete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status (v1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo storage list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odo url list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL (odo.dev/v1alpha1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+  <script src="https://assets.openshift.net/content/modernizr.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/subdomain.js" type="text/javascript"></script>
+  <script src="https://assets.openshift.net/content/nav-tertiary.js" type="text/javascript"></script>
+  <script src="https://docs.openshift.com/container-platform/4.1/_javascripts/bootstrap-offcanvas.js" type="text/javascript"></script>
+  <script src="https://docs.openshift.com/container-platform/4.1/_javascripts/reformat-html.js" type="text/javascript"></script>
+  <script src="https://docs.openshift.com/container-platform/4.1/_javascripts/hc-search.js" type="text/javascript"></script>
+  <script src="https://docs.openshift.com/container-platform/4.1/_javascripts/page-loader.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" type="text/javascript"></script>
+  <script src="https://docs.openshift.com/container-platform/4.1/_javascripts/clipboard.js" type="text/javascript"></script>
+  <script src="https://docs.openshift.com/container-platform/4.1/_javascripts/collapsible.js" type="text/javascript"></script>
+  <script>
+  var dk = 'openshift-enterprise';
+  var version = 'latest';
+
+  var distros = {
+    'openshift-origin': ['docs_origin', version],
+    // specific labels are used for OSD instead of the URL filter, due to its unusual URL structure; assume v4
+    'openshift-dedicated': ['docs_dedicated_v4'],
+    'openshift-online': ['docs_online', version],
+    'openshift-enterprise': ['docs_cp', version],
+    'openshift-aro' : ['docs_aro', version],
+    'openshift-rosa' : ['docs_rosa'],
+    'openshift-acs' : ['docs_acs', version]
+  };
+
+  // only OSD v3 docs have the version variable specified
+  if (dk == "openshift-dedicated" && version == "3") {
+    distros['openshift-dedicated'] = ['docs_dedicated_v3']
+  }
+
+  distros[dk] ? hcSearchCategory.apply(null, distros[dk]) : hcSearchCategory("docs");
+  </script>
+  <script type="text/javascript">
+  /*<![CDATA[*/
+  $(document).ready(function() {
+    $("[id^='topicGroup']").on('show.bs.collapse', function(event) {
+      if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+        $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+      }
+    });
+    $("[id^='topicGroup']").on('hide.bs.collapse', function(event) {
+      if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
+        $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
+      }
+    });
+    $("[id^='topicSubGroup']").on('show.bs.collapse', function() {
+      $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+    });
+    $("[id^='topicSubGroup']").on('hide.bs.collapse', function() {
+      $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
+    });
+    $("[id^='topicSubSubGroup']").on('show.bs.collapse', function() {
+      $(this).parent().find("[id^='ssgSpan']").toggleClass("fa-caret-right fa-caret-down");
+    });
+    $("[id^='topicSubSubGroup']").on('hide.bs.collapse', function() {
+      $(this).parent().find("[id^='ssgSpan']").toggleClass("fa-caret-right fa-caret-down");
+    });
+
+    const collapsibleContent = document.getElementsByTagName("details");
+    for (var i = 0; i < collapsibleContent.length; i++) {
+      collapsibleContent[i].setAttribute("open", "");
+    }
+
+  });
+  /*]]>*/
+  </script>
+
+  <footer id="rh">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-2">
+                <img src="https://assets.openshift.com/hubfs/images/logos/Logo-RedHat-A-Reverse-RGB.svg" class="img-fluid" alt="Red Hat" style="height: 30px;">
+            </div>
+
+            <div class="col-sm-3">
+                <p class="text-nowrap">Copyright © 2022 Red Hat, Inc.</p>
+            </div>
+
+
+
+            <div class="col">
+                <nav class="nav">
+                    <a target="_blank" href="https://www.redhat.com/en/about/privacy-policy" class="nav-link">Privacy statement</a>
+                    <a target="_blank" href="https://www.openshift.com/legal/terms/" class="nav-link">Terms of use</a>
+                    <a target="_blank" href="https://www.redhat.com/en/about/all-policies-guidelines" class="nav-link">All policies and guidelines</a>
+                    <a id="teconsent"></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>
+<div id="consent_blackbar" style="z-index: 100; position: fixed"></div>
+
+
+
+<!-- Adobe DTM -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+   _satellite.pageBottom();
+}
+</script>
+<!-- End Adobe DTM -->
+
+  <!-- adjust page css based on breadcrumb and/or resize -->
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.innerWidth >= 1008) {
+        adjustSide();
+        adjustToc();
+        adjustMain();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1008) {
+        sidebar.style.display = 'block';
+        adjustSide();
+        adjustToc();
+        adjustMain();
+      } else if (window.innerWidth < 1008) {
+        sidebar.style.display = 'none';
+        document.querySelector('.main').style.paddingTop = '0px';
+      }
+    });
+
+    function adjustSide() {
+      document.querySelector('.sidebar').style.top = parseInt((document.querySelector('.breadcrumb').offsetHeight + 125), 10) + "px";
+      document.querySelector('#hc-search').style.top = parseInt((document.querySelector('.breadcrumb').offsetHeight + 95), 10) + "px";
+    }
+
+    function adjustToc() {
+      if (document.querySelector('#toc') !== null) {
+        document.querySelector('#toc').style.top = parseInt((document.querySelector('.breadcrumb').offsetHeight + 90), 10) + "px";
+      }
+    }
+
+    function adjustMain() {
+      document.querySelector('html').style.scrollPaddingTop = parseInt((document.querySelector('.breadcrumb').offsetHeight + 90), 10) + "px";
+      document.querySelector('.main').style.paddingTop = parseInt((document.querySelector('.breadcrumb').offsetHeight - 70), 10) + "px";
+    }
+
+  </script>
+
+  <!-- remove toc active class when page is loaded -->
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', () => {
+      var tocItems = $("#toc a");
+
+      for (let i = 0; i < tocItems.length; i++) {
+        tocItems[i].classList.remove("toc-active");
+      }
+    })
+  </script>
+
+  <!-- maintain sidebar scroll position between page loads -->
+  <script type="text/javascript">
+    let sidebar = document.querySelector(".sidebar");
+    let scrolltop = localStorage.getItem("sidebar-scroll");
+
+    if (scrolltop == null) {
+      sidebar.scrollTop = parseInt(top, 10);
+    }
+
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("sidebar-scroll", sidebar.scrollTop);
+    });
+
+    window.addEventListener('load', () => {
+      sidebar.scrollTo(0, scrolltop)
+    })
+  </script>
+
+  <!-- open/close the nav -->
+  <script type="text/javascript">
+    function closeNav() {
+      let sidebar = document.querySelector(".sidebar");
+      sidebar.style.display = "none";
+    }
+
+    function openNav() {
+      let sidebar = document.querySelector(".sidebar");
+      let hc_search = document.querySelector('#hc-search');
+      sidebar.style.display = "block";
+      sidebar.style.top = "0px";
+      hc_search.style.top = 'unset';
+    }
+  </script>
+
+  <!-- clear and add toc-active to clicked toc link -->
+  <script type="text/javascript">
+  $("#toc a").click(function() {
+    var tocItems = $("#toc a");
+    for (let i = 0; i < tocItems.length; i++) {
+      tocItems[i].classList.remove("toc-active");
+    }
+    this.classList.add("toc-active");
+  });
+  </script>
+
+  <!-- update active toc class when mouse scrolls -->
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', () => {
+      window.addEventListener("wheel", () => {
+
+        const ioConfiguration = {
+          "rootMargin": "-120px 0px -400px 0px",
+          "threshold": 0
+        };
+
+        const observer = new IntersectionObserver(setCurrent, ioConfiguration, entries => {
+          entries.forEach(entry => {
+            var id = entry.target.getAttribute('id');
+            //fight with js
+            document.querySelector(`#toc li a[href="#${id}"]`).classList.remove('toc-active');
+          });
+        });
+
+        //track all h1-4 headings that have an id
+        document.querySelectorAll('.main h2[id], .main h3[id]').forEach((h) => {
+          observer.observe(h);
+        });
+
+        //runs when the IntersectionObserver fires
+        function setCurrent(e) {
+          var allTocLinks = document.querySelectorAll("#toc li a");
+          if (allTocLinks !== undefined) {
+            e.map(i => {
+              if (i.isIntersecting && i.intersectionRatio >= 1) {
+                allTocLinks.forEach(link => link.classList.remove("toc-active"));
+                document.querySelector(`#toc li a[href="#${i.target.id}"]`).classList.add('toc-active')
+              }
+            })
+          }
+        };
+
+        //make clicked toc item active and stop IntersectionObserver
+        $("#toc a").click(function() {
+          //stop tracking all h1-4 headings that have an id
+          document.querySelectorAll('.main h2[id], .main h3[id]').forEach((h) => {
+            observer.unobserve(h);
+          });
+          var tocItems = $("#toc a");
+          if (tocItems !== undefined) {
+            for (let i = 0; i < tocItems.length; i++) {
+              tocItems[i].classList.remove("toc-active");
+            };
+            this.classList.add("toc-active");
+          }
+        })
+      })
+    })
+  </script>
+
+  <!--handle page scroll top and bottom, add toc-active -->
+  <script type="text/javascript">
+    document.addEventListener('scroll', () => {
+      //scroll to bottom
+      if(document.documentElement.scrollHeight === window.pageYOffset + window.innerHeight) {
+        var tocItems = $("#toc a");
+        for (let i = 0; i < tocItems.length; i++) {
+          tocItems[i].classList.remove("toc-active")
+          };
+          tocItems[tocItems.length - 1].classList.add("toc-active");
+        };
+      //scroll to top
+      if(window.pageYOffset === 0) {
+        var tocItems = $("#toc a");
+        for (let i = 0; i < tocItems.length; i++) {
+          tocItems[i].classList.remove("toc-active");
+          };
+          tocItems[0].classList.add("toc-active");
+        };
+      })
+  </script>
+
+  <!--adjust sidebar and toc when footer is displayed -->
+  <script type="text/javascript">
+    sidebar = document.querySelector('.sidebar')
+    toc = document.querySelector('#toc')
+    main = document.querySelector('.main')
+    okd_footer = document.querySelector('.footer-origin-docs')
+
+    //handle short pages
+    if (window.innerHeight === document.documentElement.scrollHeight) {
+      //sidebar
+      if (sidebar !== null && okd_footer == null) {
+        sidebar.style.marginBottom = "38px";
+        main.style.marginBottom = "35px";
+      };
+      //okd sidebar
+      if(sidebar !== null && okd_footer !== null) {
+        sidebar.style.marginBottom = "176px";
+        main.style.marginBottom = "135px";
+      }
+    };
+
+    //handle scrolling pages
+    document.addEventListener('scroll', () => {
+      //scroll to bottom
+      if (window.innerWidth >= 1008) {
+        if(sidebar !== null) {
+          //pages with multiple toc entries
+          if(document.documentElement.scrollHeight === window.pageYOffset + window.innerHeight) {
+              //sidebar
+              if (sidebar !== null && okd_footer == null){
+                sidebar.style.marginBottom = "38px";
+                main.style.marginBottom = "35px";
+              };
+              //toc
+              if (toc !== null && okd_footer == null){
+                toc.style.bottom = "35px";
+              };
+              //okd sidebar
+              if(sidebar !== null && okd_footer !== null) {
+                sidebar.style.marginBottom = "176px";
+                main.style.marginBottom = "135px";
+              };
+              //okd toc
+              if (toc !== null && okd_footer !== null){
+                toc.style.bottom = "175px";
+              };
+            };
+          if(document.documentElement.scrollHeight != window.pageYOffset + window.innerHeight) {
+            sidebar.style.marginBottom = "0px";
+            if (toc !== null) {
+              toc.style.bottom = "0px";
+            }
+          }
+        }
+      }
+    })
+  </script>
+
+  <!-- adjust alerts on mobile -->
+  <script type="text/javascript">
+    alert = document.querySelector('#support-alert')
+    window.addEventListener("wheel", () => {
+      if (window.innerWidth < 1008) {
+        //adjust alert
+        if(window.pageYOffset > 0) {
+          if(alert !== null) {
+            document.querySelector('#support-alert').style.position = "fixed";
+            document.querySelector('#support-alert').style.bottom = "0px";
+            document.querySelector('#support-alert').style.margin = "5px";
+            document.querySelector('#support-alert').style.zIndex = "9999999";
+          }
+        }
+      }
+   });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1008) {
+        if(alert !== null) {
+          document.querySelector('#support-alert').style.removeProperty('position');
+          document.querySelector('#support-alert').style.removeProperty('bottom');
+          document.querySelector('#support-alert').style.removeProperty('margin');
+          document.querySelector('#support-alert').style.removeProperty('zIndex');
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>
