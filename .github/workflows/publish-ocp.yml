@@ -8,7 +8,7 @@ name: publish-ocp
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    #branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -54,8 +54,8 @@ jobs:
         ls
         ls _preview/
         ls _preview/openshift-enterprise
-        cp -Rf _preview/openshift-enterprise/latest/. ../dest/
-        cd ../dest
+        cp -Rf _preview/openshift-enterprise/latest/. ../dest/${GITHUB_REF##*/}
+        cd ../dest/${GITHUB_REF##*/}
         pwd
         ls
         git status
