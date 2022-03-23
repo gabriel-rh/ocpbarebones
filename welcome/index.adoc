@@ -6,7 +6,7 @@ include::modules/common-attributes.adoc[]
 [.lead]
 Welcome to the official {product-title} {product-version} documentation, where you can learn about {product-title} and start exploring its features.
 
-Adding content for #9999 bugzilla.
+Adding more content for #9999 bugzilla.
 
 ifdef::openshift-enterprise,openshift-webscale,openshift-origin[]
 Start with xref:../architecture/architecture.adoc#architecture-platform-introduction_architecture[]
