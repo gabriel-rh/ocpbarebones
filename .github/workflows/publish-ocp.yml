@@ -12,8 +12,8 @@ on:
     branches-ignore:
       - main    
     
-  pull_request:
-    branches: [ main ]
+  #pull_request:
+  #  branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -54,10 +54,6 @@ jobs:
         # python3 build.py --distro openshift-enterprise --product "OpenShift Container Platform" --version 4.10 --no-upstream-fetch
         asciibinder build
         pwd
-        ls
-        echo **_preview/**
-        ls _preview/
-        ls _preview/openshift-enterprise
         ls _preview/openshift-enterprise/${GITHUB_REF##*/}
         cp -Rf _preview/openshift-enterprise/${GITHUB_REF##*/} ../dest/${GITHUB_REF##*/}
         cd ../dest/${GITHUB_REF##*/}
