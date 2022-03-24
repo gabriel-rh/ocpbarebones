@@ -58,8 +58,8 @@ jobs:
         echo **_preview/**
         ls _preview/
         ls _preview/openshift-enterprise
-        ls _preview/openshift-enterprise/{GITHUB_REF##*/}
-        cp -Rf _preview/openshift-enterprise/{GITHUB_REF##*/} ../dest/${GITHUB_REF##*/}
+        ls _preview/openshift-enterprise/${GITHUB_REF##*/}
+        cp -Rf _preview/openshift-enterprise/${GITHUB_REF##*/} ../dest/${GITHUB_REF##*/}
         cd ../dest/${GITHUB_REF##*/}
         pwd
         ls
